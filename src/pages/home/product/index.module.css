@@ -1,0 +1,45 @@
+.productDescription{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    gap: 40px;
+    width: 750px;
+    height: 300px;
+}
+.description{
+    margin-left: 30px;
+}
+.p{
+    color: white;
+}
+.discount{
+   font-weight: bold;
+   font-size: 40px;
+    margin-bottom: 0;
+}
+.discount1{
+    margin-bottom: 0;
+    margin-top: 0;
+    word-spacing: 10px;
+}
+.img{
+    background-color: transparent;
+}
+.imgDiv{
+    margin-right: 30px;
+}
+.productLogo{
+    height: 25px;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+.shopNow{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
