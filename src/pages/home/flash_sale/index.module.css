@@ -1,9 +1,11 @@
+
 .mainDiv{
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
+    width: 100%;
 }
 .red{
     background-color: red;
@@ -21,7 +23,7 @@
     font-weight: bold;
     font-size: large;
 }
-.secondDiv{
+.product2{
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -41,7 +43,7 @@
 }
 .flashSales{
     display: flex;
-    font-size: xxx-large;
+    font-size: 3rem;
     font-weight: bold;
     align-self: self-end;
 }
@@ -63,7 +65,7 @@
     border: none;
 }
 .innerDiv{
-    width: 89%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -71,60 +73,64 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 60px;
-
 }
-.product{
-    background-color: #cfc5c5;
-    position: relative;
-    padding: 50px 25px;
-    border-radius: 10px;
-}
-.discount{
-    background-color: red;
-    position: absolute;
-    border-radius: 6px;
-    padding: 3px 8px;
-    left: 10px;
-    top: 10px;
-}
-.productImg{
-
-}
-.logo{
+.button{
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 10px;
-    gap: 5px;
-    right: 10px;
-}
-.eye, .heart{
-    height: 30px;
-    width: 35px;
-}
-.realImage{
-    display: flex;
-    width: 100%;
     justify-content: center;
     align-items: center;
 }
-.productName{
+.customButton{
+    padding: 20px 50px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
     font-weight: bold;
-    font-size: large;
-    margin-bottom: 5px;
+    transition: 0.4s;
+    cursor: pointer;
 }
-.pricing{
-    display: flex;
-    gap: 20px;
+.customButton:hover{
+    padding: 25px 55px;
+    transition: 0.4s;
+
 }
-.price{
-    color: red;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.customButton:active{
+    background-color: #efa2a2;
+    color: black;
+
 }
-.oldPrice{
-    text-decoration: line-through;
-    color: #ababab;
-    margin-top: 5px;
-    margin-bottom: 5px;
+
+@media only screen and (max-width: 1050px){
+    .product2{
+        display: flex;
+        flex-direction: column;
+    }
+    .flashSales{
+        font-size:2rem;
+        text-align: right;
+        align-self: self-start;
+    }
+    .innerDiv{
+        flex-direction: column;
+    }
+    .arrows{
+        display: flex;
+        align-self: center;
+        margin-top: 20px;
+    }
+    .productContainer{
+        grid-template-columns:repeat(3, 1fr);
+        scroll-behavior: smooth;
+        gap: 25px;
+    }
+
+
+}
+@media only screen and (max-width: 500px){
+    .productContainer{
+        grid-template-columns:repeat(2, 1fr);
+        gap: 20px;
+    }
+
 }

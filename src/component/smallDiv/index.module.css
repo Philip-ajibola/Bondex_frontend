@@ -1,0 +1,38 @@
+.categories{
+    color: red ;
+    font-weight: bold;
+    font-size: large;
+}
+.red{
+    background-color: red;
+    height: 35px;
+    width: 15px;
+    border-radius: 10px;
+}
+.firstDiv{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.innerContainer{
+    width: 50%;
+    align-self: self-start;
+    margin-left: 10px;
+}
+.product2{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.flashSales{
+    display: flex;
+    font-size: 3rem;
+    font-weight: bold;
+    align-self: self-end;
+}
+@media only screen and (max-width: 800px) {
+    .flashSales{
+        font-size: 1.1rem;
+    }
+
+}

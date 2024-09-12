@@ -1,9 +1,13 @@
+.container{
+    display: flex;
+    border-bottom: 2px solid;
+    border-bottom-color: #b3b3b3;
+}
 .header{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border-bottom: 2px solid;
-    border-bottom-color: #b3b3b3;
+    width: 100%;
 }
 .overBar{
     display: flex;
@@ -36,8 +40,27 @@
     align-items: center;
     gap: 20px;
 }
+.menu{
+    display: none;
+}
 .hr{
     border: none;
     height: 20px;
     background-color: #000;
+}
+@media only screen and (max-width: 780px) {
+    .header{
+        display: none;
+    }
+    .container{
+        margin-bottom: 10px;
+    }
+    .menu{
+        display: flex;
+        margin-bottom: 10px;
+    }
+    .menuImg{
+        height: 30px;
+        width: 30px;
+    }
 }

@@ -1,0 +1,83 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f6f6;
+    border-radius: 10px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+    padding-bottom: 26px;
+    width: 100%;
+}
+.productContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+}
+.product{
+    background-color: #cfc5c5;
+    position: relative;
+    padding: 50px 25px;
+    border-radius: 10px;
+    height: 200px;
+
+}
+.text{
+    padding-left: 16px;
+}
+.discount{
+    background-color: red;
+    position: absolute;
+    border-radius: 6px;
+    padding: 3px 8px;
+    left: 10px;
+    top: 10px;
+}
+.productImg{
+
+}
+.logo{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    gap: 5px;
+    right: 10px;
+}
+.eye, .heart{
+    height: 30px;
+    width: 35px;
+}
+.realImage{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.productName{
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 5px;
+}
+.pricing{
+    display: flex;
+    gap: 20px;
+}
+.price{
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.oldPrice{
+    text-decoration: line-through;
+    color: #ababab;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 500px){
+    .realImage1{
+        width: 100%;
+    }
+    .product{
+        height: 80px;
+    }
+}

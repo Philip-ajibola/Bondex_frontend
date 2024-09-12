@@ -1,5 +1,4 @@
-// import image from "*.jpeg";
-// import product1 from "*.jpeg";
+
 import style from './index.module.css'
 import img from '../../../assets/icons arrow-right.png'
 import React from "react";
@@ -24,14 +23,13 @@ export const Product: React.FC<ProductProps> = ({product })=>{
                         <p className={style.p}>{product.product_name}</p>
                     </div>
                     <p className={`${style.p} ${style.discount}`}>{product.discount}</p>
-                    <p className={`${style.p} ${style.discount} ${style.discount1}`}>{product.discount1}</p>
                     <div className={style.shopNow}>
                         <p className={style.p}>Shop Now</p>
                         <img src={img} className={style.img}/>
                     </div>
                 </div>
                 <div className={style.imgDiv}>
-                    <img src={product.image} alt="product" />
+                    <img className={style.img1} src={product.image} alt="product" />
                 </div>
             </div>
         </>

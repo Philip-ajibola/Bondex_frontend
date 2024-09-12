@@ -1,4 +1,4 @@
-import {DisplayProduct} from "./display_product";
+import {DisplayProduct} from "./display_product/display_product.tsx";
 import style from './index.module.css'
 
 
@@ -9,10 +9,10 @@ export const Hero = ()=>{
                 <div className={style.category}>
                     <p>ELECTRONICS</p>
                     <p>GROCERIES</p>
-                    <p>UNTENSILS</p>
+                    <p>UTENSILS</p>
                     <p>CLOTHING</p>
                 </div>
-                <div>
+                <div className={style.display}>
                     <DisplayProduct/>
                 </div>
             </div>
