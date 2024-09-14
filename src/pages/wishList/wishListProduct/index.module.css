@@ -76,6 +76,23 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.customButton{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    background-color: black;
+    bottom: 0;
+    right: 0;
+    border: none;
+    padding:  10px 0;
+}
+.customButton:active{
+    background-color: #aeaaaa;
+}
 
 @media only screen and (max-width: 500px){
     .realImage1{

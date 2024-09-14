@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    padding:50px 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+
+}
+.firstContainer, .thirdContainer{
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    align-items: center;
+    width: 90%;
+    padding:  20px 0;
+    .wishListCount{
+        font-size: 1.5rem;
+    }
+    .button1{
+        border: 1px solid black ;
+        height: 45px;
+        font-size: 1rem;
+        box-shadow: 0 6px 10px 0 rgba(0,0,0,0.5);
+        border-radius: 8px;
+        padding: 0 15px;
+        transition: 0.4s;
+    }
+    .button1:hover{
+        padding: 10px 15px;
+    }
+}
+.secondContainer, .forthContainer{
+    width:90%;
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap: 30px;
+}
+.thirdContainer{
+    padding: 0;
+    .description{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .redDiv{
+        width: 20px;
+        background-color: red;
+        height: 35px;
+        display: flex;
+        border-radius: 8px;
+    }
+    p{
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+}

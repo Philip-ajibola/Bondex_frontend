@@ -15,7 +15,7 @@
         flex-direction: column;
         margin-left: 10px;
     }
-    .product2{
+    .secondDiv{
         background-color: red;
         border: none;
         border-radius: 8px;
@@ -26,7 +26,7 @@
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
         transition: 0.4s;
     }
-    .product2:hover{
+    .secondDiv:hover{
         padding: 25px 35px;
     }
 }

@@ -43,6 +43,12 @@
 .menu{
     display: none;
 }
+.imgContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 .hr{
     border: none;
     height: 20px;

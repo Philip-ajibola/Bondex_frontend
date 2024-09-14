@@ -6,45 +6,232 @@
 }
 .productDiv{
    display: flex;
+    width: 100%;
     flex: 1;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    gap: 40px;
+    gap: 30px;
+    height: 500px;
 }
 .secondProductDiv{
     display: flex;
     flex-direction: column;
     width: 45%;
+    height: 100%;
+    justify-content: space-between;
 }
 .firstDiv{
     display: flex;
     flex: 1;
+    flex-direction: column;
     background-color: black;
     width: 45%;
+    height: 500px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 16px 20px rgba(0,0,0,0.5);
+    transition: 0.4s;
+    .description{
+        bottom: 0;
+        top: 400px;
+        left: 30px;
+        right: 0;
+        height: 80px;
+    }
+    .img{
+        height: 420px;
+    }
 }
 .product2{
     width: 100%;
-    height: 50%;
+    height: 248px;
     display: flex;
     flex-direction: column;
-    align-items: self-end;
+    position: relative;
+    transition: 0.4s;
     .firstDiv1{
         width:100%;
-        display: flex;align-items: center;
+        display: flex;
+        align-items: self-end;
         background-color: black;
+        border-radius: 15px;
+        box-shadow: 0 16px 20px rgba(0,0,0,0.5);
         .img{
-            height: 300px;
+            height: 220px;
+            width: 60%;
             align-self: center;
+            margin-left: 160px;
         }
     }
+    .description{
+        bottom: 0;
+        top: 150px;
+        left: 30px;
+        right: 0;
+        height: 70px;
+    }
 }
-.thirdDiv{
+.thirdProductDiv{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 240px;
+    .product3{
+        height: 100%;
+        width: 47%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        box-shadow: 0 16px 20px rgba(0,0,0,0.5);
+        .imageDiv{
+            height: 100%;
+            .img1{
+                height: 200px;
+
+            }
+        }
+    }
+    .firstDiv2{
+        height:100%;
+    }
+
+}
+.product3{
+    display: flex;
+    flex-direction: row;
+    height: 48%;
+    position: relative;
+    background-color: black;
+    transition: 0.4s;
+    .description{
+        bottom: 0;
+        top: 180px;
+        left: 20px;
+        right: 0;
+        height: 80px;
+        p{
+            font-size: 1rem;
+        }
+        .p{
+            font-size: 0.6rem;
+        }
+
+    }
+}
+.product3:hover{
+   padding: 7px 7px;
+}
+.product2:hover{
+   padding: 10px 7px;
+}
+.firstDiv:hover{
+   padding: 10px 7px;
 }
 .forthDiv{
     flex: 1;
     display: flex;
     position: absolute;
+}
+.description{
+    position: absolute;
+
+    p{
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 3px;
+    }
+    .p{
+        font-size: 0.9rem;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .firstDiv{
+        display: none;
+    }
+   .secondProductDiv{
+       width: 100%;
+       .product2{
+           width: 98%;
+           align-self: center;
+           .img{
+               width: 220px;
+           }
+           .description{
+               bottom: 0;
+               top: 130px;
+               left: 20px;
+               right: 0;
+               height: 80px;
+           }
+       }
+   }
+   .product3{
+       .img1{
+           width: 160px;
+           height: 200px;
+       }
+   }
+}
+.link{
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1050px){
+    .productDiv{
+        gap: 10px;
+    }
+    .firstDiv{
+        height: 480px;
+        .img{
+            height: 350px;
+        }
+        .description{
+            bottom: 0;
+            top: 350px;
+            left: 20px;
+            right: 0;
+            height: 80px;
+        }
+    }
+    .secondProductDiv{
+        width: 42%;
+        .product2{
+            .firstDiv1{
+                .img{
+                    margin: 0 0 0 100px;
+                }
+            }
+            .description{
+                bottom: 0;
+                top: 120px;
+                left: 20px;
+                right: 0;
+                height: 80px;
+            }
+        }
+        .firstDiv1{
+            padding-right: 0;
+        }
+    }
+        .product3{
+            .imageDiv{
+                img{
+                    width: 150px;
+                }
+            }
+            .description{
+                bottom: 0;
+                top: 155px;
+                left: 20px;
+                right: 0;
+                height: 80px;
+            }
+        }
+
+
+
 }

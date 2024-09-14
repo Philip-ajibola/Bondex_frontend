@@ -1,6 +1,10 @@
 import product1 from '../../../assets/ps5-slim-goedkope-playstation_large 1.png';
+import product2 from '../../../assets/attractive-woman-wearing-hat-posing-black-background 1.png'
+import product3 from '../../../assets/Frame 706.png'
+import product4 from '../../../assets/Frame 707.png'
 import SmallDiv from "../../../component/smallDiv/smallDiv.tsx";
 import style from './index.module.css'
+import {Link} from "react-router-dom";
 const NewArrival = ()=>{
     return (
         <div className={style.container}>
@@ -8,45 +12,46 @@ const NewArrival = ()=>{
             <div className={style.productDiv}>
                 <div className={style.firstDiv}>
                     <div>
-                        <img src={product1} alt={"IMG"}/>
+                        <img className={style.img} src={product1} alt={"IMG"}/>
                     </div>
-                    <div>
+                    <div className={style.description}>
                         <p>Play Station 5</p>
-                        <p>Black and White version of the PS5 coming out on sale.</p>
+                        <p className={style.p}>Black and White version of the PS5 coming out on sale.</p>
+                        <Link to={"#"} className={style.link}>Shop Now</Link>
                     </div>
                 </div>
                 <div className={style.secondProductDiv}>
                     <div className={style.product2}>
                             <div className={style.firstDiv1}>
-                                <img className={style.img} src={product1} alt={"IMG"}/>
+                                <img className={style.img} src={product2} alt={"IMG"}/>
                             </div>
-                            <div>
-                                <p>Play Station 5</p>
-                                <p>Black and White version of the PS5 coming out on sale.</p>
+                            <div className={style.description}>
+                                <p>Women's Collections</p>
+                                <p className={style.p}>Featured woman collections that give you another vibe.</p>
+                                <Link to={"#"} className={style.link}>Shop Now</Link>
                             </div>
-
                     </div>
-                    <div>
-                        <div className={style.thirdDiv}>
-                            <div className={style.firstDiv}>
-                                <div>
-                                    <img src={product1} alt={"IMG"}/>
+                    <div className={style.thirdProductDiv}>
+                            <div className={style.product3}>
+                                <div className={style.imageDiv}>
+                                    <img className={style.img1} src={product4} alt={"IMG"}/>
                                 </div>
-                                <div>
-                                    <p>Play Station 5</p>
-                                    <p>Black and White version of the PS5 coming out on sale.</p>
-                                </div>
-                            </div>
-                            <div className={style.firstDiv}>
-                                <div>
-                                    <img src={product1} alt={"IMG"}/>
-                                </div>
-                                <div>
-                                    <p>Play Station 5</p>
-                                    <p>Black and White version of the PS5 coming out on sale.</p>
+                                <div className={style.description}>
+                                    <p>Speakers</p>
+                                    <p className={style.p}>Amazon wireless speakers.</p>
+                                    <Link to={"#"} className={style.link}>Shop Now</Link>
                                 </div>
                             </div>
-                        </div>
+                        <div className={style.product3}>
+                                <div className={style.imageDiv}>
+                                    <img className={style.img1} src={product3} alt={"IMG"}/>
+                                </div>
+                                <div className={style.description}>
+                                    <p>Perfumes</p>
+                                    <p className={style.p}>GUCCI INTENSE OUD EDP</p>
+                                    <Link to={"#"} className={style.link}>Shop Now</Link>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

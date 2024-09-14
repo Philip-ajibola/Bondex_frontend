@@ -127,7 +127,7 @@
 
 
 }
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 600px){
     .productContainer{
         grid-template-columns:repeat(2, 1fr);
         gap: 20px;
