@@ -11,7 +11,7 @@ const WishList =() =>(
         </div>
         <div className={style.secondContainer}>
             {data.slice(0, 4).map((product) => (
-                <div>
+                <div className={style.product}>
                     <WishListProduct item={product}/>
                 </div>
             ))}
@@ -25,7 +25,7 @@ const WishList =() =>(
         </div>
         <div className={style.forthContainer}>
             {data.slice(4, 8).map((product) => (
-                <div>
+                <div className={style.product}>
                     <ForYou item={product}/>
                 </div>
             ))}

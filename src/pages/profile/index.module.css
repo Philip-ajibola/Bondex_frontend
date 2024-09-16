@@ -1,0 +1,118 @@
+.motherContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.container{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 0 30px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    margin: 50px 0;
+}
+.firstP{
+    font-size: 2rem;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.input{
+    width: 90%;
+    padding: 15px 5px;
+    border: 1px solid #b3b3b3;
+    border-radius: 8px;
+    background-color: #fbf9f9;
+}
+.firstDiv{
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding:  20px 0;
+    .firstDiv_1{
+        display: flex;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: space-between;
+        .firstDiv_1_1{
+            display: flex;
+            width: 48%;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 5px;
+            gap: 3px;
+            p{
+                margin-bottom: 3px;
+                font-size: 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+}
+.secondDiv{
+    display: flex;
+    width: 90%;
+    align-items: flex-start;
+    padding-left: 5px;
+    padding-bottom: 15px;
+    flex-direction: column;
+    gap: 10px;
+    p{
+        font-size: 1.3rem;
+        color: black;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+}
+.thirdDiv{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 30px;
+    .customButton1, .customButton2{
+        padding: 15px 25px;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+        font-weight: bold;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+    }
+    .customButton1{
+        background-color: white;
+    }
+    .customButton2{
+        background-color: red;
+        color: white;
+    }
+    .customButton2:hover, .customButton1:hover{
+        padding: 18px 25px;
+    }
+
+}
+
+@media only screen and (max-width: 600px){
+    .container{
+        width: 98%;
+        padding: 5px;
+        .firstDiv, .secondDiv, .thirdDiv{
+            width: 100%;
+        }
+    }
+    .input{
+        padding: 10px 5px;
+
+    }
+    .thirdDiv{
+        padding: 0;
+    }
+
+}

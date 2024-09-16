@@ -102,3 +102,8 @@
         height: 80px;
     }
 }
+@media  only screen  and (max-width: 1050px){
+    .container{
+        width: 100%;
+    }
+}

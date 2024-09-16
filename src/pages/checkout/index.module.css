@@ -1,0 +1,128 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 60%;
+    border-radius: 15px;
+    margin:  55px 0;
+    gap: 15px;
+    box-shadow: 0 10px 14px rgba(0, 0, 0, 0.6);
+}
+.mainDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.motherDiv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+.firstDiv{
+    margin-left: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 95%;
+    p{
+        margin-bottom: 3px;
+    }
+}
+.inputDiv{
+    width: 80%;
+    padding: 17px;
+    border-radius: 8px;
+    border: 1px solid #b3b3b3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+
+}
+.p{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #8f8b8b;
+    span{
+        color: red;
+    }
+}
+.checkBoxDiv{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    input[type="checkbox"] {
+        accent-color: red;
+        width: 20px;
+        height: 20px;
+    }
+    p{
+        font-weight: bold;
+        font-size: 1rem;
+        color: black;
+    }
+
+}
+.lastDiv{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    width: 95%;
+    .lastDiv_1{
+        width: 86%;
+        display: flex;
+        align-self: self-start;
+        justify-content: space-between;
+        .lastDiv_1_1{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            input[type="radio"]{
+                accent-color: black;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    .button{
+        background-color: red;
+        color: white;
+        border-radius: 8px;
+        transition: 0.4s;
+        border: none;
+        padding: 15px 20px;
+        font-weight: bold;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+        align-self: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .button:hover{
+        padding: 18px 23px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .container{
+        width: 98%;
+    }
+    .motherDiv{
+        gap: 5px;
+    }
+    .inputDiv{
+        padding: 15px;
+    }
+    .lastDiv{
+        .lastDiv_1{
+            width: 92%;
+        }
+    }
+}

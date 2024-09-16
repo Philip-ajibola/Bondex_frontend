@@ -1,0 +1,235 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+
+}
+.firstContainer{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    .fDiv1, .fDiv2, .fDiv3{
+        padding: 0  20px;
+        border-radius: 8px;
+        border: 1px solid #b8b0b0;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.5);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .fDiv1{
+        p{
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+    }
+    .fDiv2{
+        flex-direction: column;
+        border: none;
+        box-shadow: none;
+        gap: 20px;
+        .fDiv2_1{
+           display: flex;
+           width: 100%;
+            padding: 0 20px;
+            border-radius: 8px;
+           justify-content: space-between;
+            border: 1px solid #b8b0b0;
+            box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.5);
+           align-items: center;
+           .fDiv2_1_1{
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               img{
+                   width: 70px;
+                   height: 70px;
+               }
+           }
+           .fDivp, .fDivp2{
+               width: 20%;
+
+           }
+           .fDivp{
+               text-align: center;
+               margin-left: -55px;
+           }
+           .fDivp2{
+               text-align: right;
+           }
+       }
+    }
+    .fDiv3{
+        justify-content: space-between;
+        padding: 20px;
+        .button{
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 8px;
+            box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+.secondContainer{
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    width: 40%;
+    border:1.5px solid #534e4e;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin:50px 65px  50px 0;
+    .sDivMother{
+        width: 90%;
+        .p{
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        .p2{
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .sDiv1{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #989797;
+        }
+
+    }
+    .downButton{
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        border: none;
+        border-radius: 6px;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.5);
+        padding: 18px 25px;
+        margin: 20px 0;
+        transition: 0.4s;
+    }
+    .downButton:hover{
+        padding: 20px 30px ;
+    }
+}
+.quantitySelector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid #989797;
+    padding: 5px;
+}
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+}
+.quantityButton {
+    display: flex;
+    background-color: white;
+    height: 8px;
+    width: 30px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.quantityButton:hover {
+    background-color: #888a8c;
+}
+
+.quantityDisplay {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 570px) {
+    .secondContainer{
+        width: 100%;
+        margin: 30px 0;
+    }
+    .firstContainer{
+        .fDiv1{
+            p{
+                font-size: 0.8rem;
+            }
+        }
+        .fDiv2{
+            .fDiv2_1{
+                .fDiv2_1_1{
+                    img{
+                        width: 30px;
+                        height: 30px;
+                    }
+                    p{
+                        font-size: 0.4rem;
+                    }
+                }
+                .fDivp, .fDivp2{
+                    font-size: 0.9rem;
+                }
+                .fDivp{
+                    margin-left:-5px;
+                }
+                .quantitySelector{
+                    padding: 0 4px ;
+                    height: 30px;
+                    .quantityButton{
+                        img{
+                            height: 12px;
+                        }
+                        height: 15px;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+    }
+}
+@media only screen and (min-width: 571px) and (max-width: 900px){
+    .secondContainer{
+        margin: 30px 20px;
+    }
+    .quantitySelector{
+        height: 30px;
+        .quantityButton{
+            img{
+                height: 14px;
+            }
+            height: 15px;
+            padding: 0;
+        }
+
+    }
+    .firstContainer{
+        .fDiv2{
+            .fDiv2_1{
+                .fDivp{
+                    margin-left:-80px;
+                }
+            }
+        }
+    }
+
+
+
+}
