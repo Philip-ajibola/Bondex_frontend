@@ -7,6 +7,9 @@ import Cart from "../pages/cart/cart.tsx";
 import Checkout from "../pages/checkout/checkout.tsx";
 import Profile from "../pages/profile/profile.tsx";
 import AboutUs from "../pages/aboutUs/aboutUs.tsx";
+import Contact from "../pages/contact/contact.tsx";
+import OneProduct from "../pages/item/item.tsx";
+import NotFoundPage from "../pages/notFoundPage/notFound.tsx";
 
 export const ROUTE = [
     {
@@ -48,6 +51,18 @@ export const ROUTE = [
             ,{
                 path: "/about-us",
                 element:<AboutUs/>
+            },
+            {
+                path: "/contact",
+                element:<Contact/>
+            },
+            {
+                path: "/one-product",
+                element:<OneProduct/>
+            },
+            {
+                path: "/not-found",
+                element:<NotFoundPage/>
             },
         ]
 
