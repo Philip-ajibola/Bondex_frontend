@@ -1,4 +1,4 @@
-import  { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import { CartContext } from "../../context.tsx";
@@ -8,6 +8,7 @@ import image1 from '../../assets/Vector (1).png';
 import image2 from '../../assets/Cart1.png';
 import menuLogo from '../../assets/menu_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png';
 import style from './index.module.css';
+import data from "../../pages/home/flash_sale/data.ts";
 
 export const Header = () => {
     const { cartItems, wishList } = useContext(CartContext);
@@ -16,6 +17,9 @@ export const Header = () => {
     const navigate = useNavigate();
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredProducts, setFilteredProducts] = useState<CartItem[]>([]);
+    const products = data
 
     const handleClickWishList = () => {
         if (wishList.length === 0) {
@@ -42,6 +46,24 @@ export const Header = () => {
         setMenuOpen(!menuOpen);
     };
 
+    const handleSearch = (event:any) => {
+        const query = event.target.value.toLowerCase();
+        setSearchQuery(query);
+
+
+        const filtered = products.filter(product =>
+            product.productName.toLowerCase().includes(query)
+        );
+        setFilteredProducts(filtered);
+    };
+
+    const handleProductClick = (product:CartItem) => {
+
+        navigate(`/product/${product.id}`);
+        setSearchQuery('');
+        setFilteredProducts([]);
+    };
+
     const checker = location.pathname !== '/sign-in' && location.pathname !== '/sign-up';
 
     return (
@@ -63,11 +85,32 @@ export const Header = () => {
                 {checker && (
                     <div className={style.searchDiv}>
                         <div className={style.searchBar}>
-                            <input type="text" placeholder="What are you looking for?" className={style.search} />
+                            <input
+                                type="text"
+                                placeholder="What are you looking for?"
+                                className={style.search}
+                                value={searchQuery}
+                                onChange={handleSearch}
+                            />
                             <div className={style.searchLogo}>
                                 <img src={image} alt="Search" />
                             </div>
                         </div>
+
+                        {filteredProducts.length > 0 && (
+                            <div className={style.dropdown}>
+                                {filteredProducts.map(product => (
+                                    <div
+                                        key={product.id}
+                                        className={style.dropdownItem}
+                                        onClick={() => handleProductClick(product)}
+                                    >
+                                        {product.productName}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
                         <div className={style.imgContainer}>
                             <div className={style.imgDiv}>
                                 <img src={image1} onClick={handleClickWishList} alt="WishList" />
@@ -85,6 +128,7 @@ export const Header = () => {
                 )}
             </div>
 
+            {/* Mobile Header and Menu */}
             <div className={style.mobileHeader}>
                 <h1>Bobby's Store</h1>
                 <div className={style.searchDiv}>
