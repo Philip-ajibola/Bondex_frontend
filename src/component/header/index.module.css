@@ -71,11 +71,7 @@
     background-color: #000;
 }
 .mobileHeader{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 20px;
+   display: none;
 }
 .mobileMenu{
     display: flex;
@@ -101,9 +97,9 @@
     position: absolute;
     background-color: white;
     border: 1px solid #ccc;
-    z-index: 100;
-    width: 100%;
+    width: 50%;
     max-height: 200px;
+    top: 60px;
     overflow-y: auto;
 }
 
@@ -116,12 +112,20 @@
     background-color: #f0f0f0;
 }
 
-@media only screen and (max-width: 880px) {
+@media only screen and (max-width: 700px) {
     .header{
         display: none;
+        h1{
+            font-size: 1rem;
+        }
+
     }
 
     .mobileHeader{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
         padding: 0;
         h1{
             font-size: 0.6rem;
@@ -163,11 +167,65 @@
         width: 30px;
     }
 }
+@media screen and (max-width: 950px) and (min-width: 701px){
+    .header{
+        display: none;
+
+    }
+
+    .mobileHeader{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        h1{
+            font-size: 2rem;
+        }
+        .imgContainer{
+            gap: 25px;
+            .imgDiv{
+                width: 20px;
+                img{
+                    width: 18px;
+                }
+            }
+        }
+        .searchBar{
+            .search{
+                width: 160px;
+            }
+
+            .search::placeholder{
+                font-size: 0.8rem;
+            }
+
+            img{
+                width: 18px;
+            }
+        }
+
+    }
+    .container{
+        margin-bottom: 10px;
+    }
+    .menu{
+        display: flex;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    .menuImg{
+        height: 30px;
+        width: 30px;
+    }
+
+}
+
 
 @media screen and (max-width: 1200px) {
     .header{
         h1{
-            font-size: 1rem;
+            font-size: 2rem;
         }
     }
 

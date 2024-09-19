@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import {useState, useContext, useRef, useEffect} from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import { CartContext } from "../../context.tsx";
@@ -19,7 +19,9 @@ export const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredProducts, setFilteredProducts] = useState<CartItem[]>([]);
-    const products = data
+    const products = data;
+
+    const searchAreaRef = useRef<HTMLDivElement>(null);
 
     const handleClickWishList = () => {
         if (wishList.length === 0) {
@@ -46,10 +48,9 @@ export const Header = () => {
         setMenuOpen(!menuOpen);
     };
 
-    const handleSearch = (event:any) => {
+    const handleSearch = (event: any) => {
         const query = event.target.value.toLowerCase();
         setSearchQuery(query);
-
 
         const filtered = products.filter(product =>
             product.productName.toLowerCase().includes(query)
@@ -57,18 +58,33 @@ export const Header = () => {
         setFilteredProducts(filtered);
     };
 
-    const handleProductClick = (product:CartItem) => {
-
-        navigate(`/product/${product.id}`);
+    const handleProductClick = (product: CartItem) => {
+        navigate(`/one-product`, { state: { data: product } });
         setSearchQuery('');
         setFilteredProducts([]);
     };
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (
+            searchAreaRef.current &&
+            !searchAreaRef.current.contains(event.target as Node)
+        ) {
+            setSearchQuery('');
+            setFilteredProducts([]);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     const checker = location.pathname !== '/sign-in' && location.pathname !== '/sign-up';
 
     return (
         <div className={style.container}>
-            {/* Desktop Header */}
             <div className={style.header}>
                 <h1>Bobby's Store</h1>
                 <div className={style.overBar}>
@@ -83,7 +99,7 @@ export const Header = () => {
                 </div>
 
                 {checker && (
-                    <div className={style.searchDiv}>
+                    <div className={style.searchDiv} ref={searchAreaRef}>
                         <div className={style.searchBar}>
                             <input
                                 type="text"
@@ -113,11 +129,11 @@ export const Header = () => {
 
                         <div className={style.imgContainer}>
                             <div className={style.imgDiv}>
-                                <img src={image1} onClick={handleClickWishList} alt="WishList" />
+                                <img src={image1} onClick={() => handleClickWishList()} alt="WishList" />
                                 {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
                             </div>
                             <div className={style.imgDiv}>
-                                <img src={image2} onClick={handleClickCart} alt="Cart" />
+                                <img src={image2} onClick={() => handleClickCart()} alt="Cart" />
                                 {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
                             </div>
                             <div className={style.imgDiv}>
@@ -128,23 +144,35 @@ export const Header = () => {
                 )}
             </div>
 
-            {/* Mobile Header and Menu */}
             <div className={style.mobileHeader}>
                 <h1>Bobby's Store</h1>
                 <div className={style.searchDiv}>
                     <div className={style.searchBar}>
-                        <input type="text" placeholder="What are you looking for?" className={style.search}/>
+                        <input type="text" placeholder="What are you looking for?" className={style.search} onChange={handleSearch}/>
                         <div className={style.searchLogo}>
                             <img src={image} alt="Search"/>
                         </div>
                     </div>
+                    {filteredProducts.length > 0 && (
+                        <div className={style.dropdown}>
+                            {filteredProducts.map(product => (
+                                <div
+                                    key={product.id}
+                                    className={style.dropdownItem}
+                                    onClick={() => handleProductClick(product)}
+                                >
+                                    {product.productName}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                     <div className={style.imgContainer}>
                         <div className={style.imgDiv}>
-                            <img src={image1} onClick={handleClickWishList} alt="WishList"/>
+                            <img src={image1} onClick={()=>handleClickWishList()} alt="WishList"/>
                             {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
                         </div>
                         <div className={style.imgDiv}>
-                            <img src={image2} onClick={handleClickCart} alt="Cart"/>
+                            <img src={image2} onClick={()=>handleClickCart()} alt="Cart"/>
                             {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
                         </div>
                         <div className={style.imgDiv}>
@@ -152,7 +180,7 @@ export const Header = () => {
                         </div>
                     </div>
                 </div>
-                <button onClick={toggleMenu} className={style.menu}>
+                <button onClick={()=>toggleMenu()} className={style.menu}>
                     <img className={style.menuImg} src={menuLogo} alt="Menu"/>
                 </button>
             </div>
@@ -167,7 +195,7 @@ export const Header = () => {
                             toggleMenu();
                         }}>Sign Out</Link>
                     ) : (
-                        <Link className={style.link} to={'/sign-up'} onClick={toggleMenu}>Sign Up</Link>
+                        <Link className={style.link} to={'/sign-up'} onClick={()=>toggleMenu()}>Sign Up</Link>
                     )}
                 </div>
             )}
