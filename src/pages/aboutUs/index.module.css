@@ -70,7 +70,7 @@
         background-color: #8f8b8b;
     }
     .secondDiv_1:hover{
-        padding: 5px;
+        padding: 15px;
     }
 }
 .thirdDiv{
@@ -166,6 +166,9 @@
             /*img{*/
             /*    width: 50px;*/
             /*}*/
+        }
+        .secondDiv_1:hover{
+            padding: 18px 38px;
         }
     }
     .thirdDiv{

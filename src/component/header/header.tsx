@@ -6,9 +6,10 @@ import image from '../../assets/Vector.png';
 import profile from '../../assets/user.png';
 import image1 from '../../assets/Vector (1).png';
 import image2 from '../../assets/Cart1.png';
-import menuLogo from '../../assets/menu_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png';
 import style from './index.module.css';
 import data from "../../pages/home/flash_sale/data.ts";
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 export const Header = () => {
     const { cartItems, wishList } = useContext(CartContext);
@@ -81,8 +82,8 @@ export const Header = () => {
         };
     }, []);
 
-    const checker = location.pathname !== '/sign-in' && location.pathname !== '/sign-up' && location.pathname !== '/';
-
+    const checker = location.pathname !== '/' && (location.pathname !== '/sign-in' && location.pathname !== '/sign-up');
+    console.log(checker)
     return (
         <div className={style.container}>
             <div className={style.header}>
@@ -146,9 +147,10 @@ export const Header = () => {
 
             <div className={style.mobileHeader}>
                 <h1>Bobby's Store</h1>
-                <div className={style.searchDiv}>
+                {checker && (<div className={style.searchDiv}>
                     <div className={style.searchBar}>
-                        <input type="text" placeholder="What are you looking for?" className={style.search} onChange={handleSearch}/>
+                        <input type="text" placeholder="What are you looking for?" className={style.search}
+                               onChange={handleSearch}/>
                         <div className={style.searchLogo}>
                             <img src={image} alt="Search"/>
                         </div>
@@ -168,20 +170,20 @@ export const Header = () => {
                     )}
                     <div className={style.imgContainer}>
                         <div className={style.imgDiv}>
-                            <img src={image1} onClick={()=>handleClickWishList()} alt="WishList"/>
+                            <img src={image1} onClick={() => handleClickWishList()} alt="WishList"/>
                             {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
                         </div>
                         <div className={style.imgDiv}>
-                            <img src={image2} onClick={()=>handleClickCart()} alt="Cart"/>
+                            <img src={image2} onClick={() => handleClickCart()} alt="Cart"/>
                             {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
                         </div>
                         <div className={style.imgDiv}>
                             <img src={profile} alt="Profile" onClick={() => navigate('/profile')}/>
                         </div>
                     </div>
-                </div>
+                </div>)}
                 <button onClick={()=>toggleMenu()} className={style.menu}>
-                    <img className={style.menuImg} src={menuLogo} alt="Menu"/>
+                    <MenuIcon style={{color:'black'}}/>
                 </button>
             </div>
             {menuOpen && (

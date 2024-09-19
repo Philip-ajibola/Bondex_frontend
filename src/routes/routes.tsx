@@ -19,7 +19,7 @@ export const ROUTE = [
         element:<Layout/>,
         children:[
             {
-                path: "",
+                path: "/",
                 element:<AboutUs/>
             },
             {
