@@ -78,6 +78,10 @@ export const ROUTE = [
                 path: "/stripe-check-out",
                 element:<StripeCheckout/>
             },
+            {
+                path: "*",
+                element: <NotFoundPage />
+            },
         ]
 
     }
