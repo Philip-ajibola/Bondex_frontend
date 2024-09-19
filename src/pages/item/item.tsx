@@ -12,21 +12,24 @@ const OneProduct = ()=> {
     const location = useLocation();
     const { state } = location;
     const product = state?.data;
-    let subTotal = 0
+    const [subTotal,setSubtotal] = useState(0)
     const [quantities, setQuantities] = useState(0);
 
     const incrementQuantity = () => {
         setQuantities(quantities+1);
+        setSubtotal(quantities*quantities);
     };
 
     const decrementQuantity = () => {
         if (quantities > 0) {
             setQuantities(quantities-1);
+            setSubtotal(quantities*quantities);
         }
     };
     const handleBuyNow = ()=>{
-        subTotal = product.newPrice * quantities;
-        navigate('/check-out',{state:{amount:subTotal}})
+        if(subTotal===0) {
+            window.alert("You Haven't Tell us the How Many You want to buy Please select how many you want to buy!");
+        }else navigate('/check-out',{state:{amount:subTotal}})
     }
 
     return (
@@ -52,7 +55,7 @@ const OneProduct = ()=> {
                         <p>{String(quantities).padStart(2, '0')}</p>
                         <button className={style.decrease} onClick={() => decrementQuantity()}>-</button>
                     </div>
-                    <CustomButton text={'Buy Now'} style={style.button} onPress={()=>handleBuyNow()}/>
+                    <CustomButton text={subTotal !==0 ?`Buy Now At ${subTotal}`:"Buy Now"} style={style.button} onPress={()=>handleBuyNow()}/>
                 </div>
                 <div className={style.secondDiv_4}>
                     <div className={style.secondDiv_4_1}>

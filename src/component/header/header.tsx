@@ -81,7 +81,7 @@ export const Header = () => {
         };
     }, []);
 
-    const checker = location.pathname !== '/sign-in' && location.pathname !== '/sign-up';
+    const checker = location.pathname !== '/sign-in' && location.pathname !== '/sign-up' && location.pathname !== '/';
 
     return (
         <div className={style.container}>
