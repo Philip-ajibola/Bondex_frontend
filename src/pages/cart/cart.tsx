@@ -13,7 +13,7 @@ const Cart = () => {
     const [quantities, setQuantities] = useState<number[]>(data.map(() => 1));
     let totalPrice= 0;
 
-    const  handlePayment = ({amount}:number)=>{
+    const  handlePayment = ()=>{
         navigate('/check-out',{state:{amount:totalPrice}})
     }
     const incrementQuantity = (index: number) => {
@@ -95,7 +95,7 @@ const Cart = () => {
                         <p className={style.p2}>${totalPrice.toFixed(2)}</p>
                     </div>
                 </div>
-                <CustomButton text={'Process To CheckOut'} style={style.downButton} onPress={()=>handlePayment(totalPrice)}/>
+                <CustomButton text={'Process To CheckOut'} style={style.downButton} onPress={()=>handlePayment()}/>
             </div>
         </div>
     );

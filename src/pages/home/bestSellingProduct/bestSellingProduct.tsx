@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 
 const BestSellingProduct = ()=>{
     const navigate = useNavigate();
-    const onProductClick = ({index}:number)=>{
+    const onProductClick = (index: number)=>{
         const product = data[index];
         navigate('/one-product',{state:{data:product}});
     }

@@ -4,7 +4,7 @@ import CustomButton from "../../../component/customeButton/customButton.tsx";
 import Cart from "../../../assets/Cart1 (1).png";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const ForYou = ({item})=>{
+const ForYou = ({item}:{item:CartItem})=>{
     return (
         <div className={style.container}>
             <div className={style.product}>

@@ -6,7 +6,7 @@ import style from './index.module.css'
 const StripeCheckout = () => {
     const location = useLocation();
     const {state} = location;
-    const amount = state?.amount || 0;
+    const amount:number = state?.amount || 0;
     return (
         <div className={style.container}>
             <h1>Checkout</h1>

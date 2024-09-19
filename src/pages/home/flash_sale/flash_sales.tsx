@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 
 export const FlashSale = ()=>{
     const navigate = useNavigate();
-    const onProductClick = ({index}:{index:number})=>{
+    const onProductClick = (index: number)=>{
         const product = data[index];
         navigate('/one-product',{state:{data:product}});
     }

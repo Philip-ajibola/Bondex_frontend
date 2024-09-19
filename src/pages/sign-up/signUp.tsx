@@ -34,13 +34,13 @@ const SignUp = () => {
             await signUp?.prepareEmailAddressVerification({ strategy: 'email_code' });
             setShowVerification(true);
             setLoading(true)
-        } catch (err) {
+        } catch (err:any) {
             window.alert(`Error:  ${err.errors[0].longMessage}`);
             console.log(err.message);
         }
     };
 
-    const handleVerify = async (e) => {
+    const handleVerify = async (e:any) => {
         e.preventDefault();
         if (!isLoaded) return;
         try {
@@ -72,7 +72,7 @@ const SignUp = () => {
                                 <input
                                     type="text"
                                     placeholder="Enter verification code"
-                                    maxLength="6"
+                                    maxLength={6}
                                     required
                                     value={verification.code}
                                     onChange={(e) => setVerification({...verification, code: e.target.value})}

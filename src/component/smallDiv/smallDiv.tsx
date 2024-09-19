@@ -1,6 +1,6 @@
 import style from "./index.module.css";
 
-const SmallDiv = ({item,text}:{item:CartItem,text:string})=>(
+const SmallDiv = ({item,text}:{item:string,text:string})=>(
     <>
         <div className={style.firstDiv}>
             <div className={style.red}></div>

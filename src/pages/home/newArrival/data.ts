@@ -9,29 +9,37 @@ const Data = [
         productName:'Play Station 5',
         productImage:product1,
         newPrice:'$1300',
+        oldPrice:'',
         description:'Black and White version of the PS5 coming out on sale',
-
+        discount: "",
     },
     {
         id:2,
         productName:'Women\'s Collections',
         productImage:product2,
         newPrice:'$2000',
+        oldPrice:'',
         description:'Featured woman collections that give you another vibe.',
+        discount:"",
     },
     {
         id:3,
         productName:'Speakers',
         productImage:product3,
         newPrice:'$702',
+        oldPrice: '',
         description:'Amazon wireless speakers.',
+        discount: '',
+
     },
     {
         id:4,
         productName:'Perfumes',
         productImage:product4,
         newPrice:'$1750',
+        oldPrice: '',
         description:'GUCCI INTENSE OUD EDP',
+        discount: '',
     },
 ]
 export default Data

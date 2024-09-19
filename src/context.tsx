@@ -7,6 +7,7 @@ interface CartItem {
     newPrice: string;
     oldPrice: string;
     description: string;
+    discount:string;
 }
 
 interface CartContextType {

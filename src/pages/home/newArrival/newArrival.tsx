@@ -8,7 +8,7 @@ import Data from './data';
 import {useNavigate} from "react-router-dom";
 const NewArrival = ()=>{
     const navigate = useNavigate();
-    const handleOnclick = ({product}:CartItem) =>{
+    const handleOnclick = (product:OurProduct) =>{
         console.log("onProductClick",product)
         navigate('/one-product',{state:{data:product}});
     }

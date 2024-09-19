@@ -18,7 +18,7 @@ const WishList =() => {
                 <CustomButton text={"Move All To Bag"} style={style.button1}/>
             </div>
             <div className={style.secondContainer}>
-                {product.map(({product}:CartItem) => (
+                {product.map(({product}:{product:CartItem}) => (
                     <div className={style.product}>
                         <WishListProduct item={product} onclick={()=>addToWishList(product)}/>
                     </div>

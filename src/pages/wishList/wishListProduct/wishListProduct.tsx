@@ -22,7 +22,7 @@ const WishListProduct = ({ item, onclick }:{item:CartItem,onclick:()=>void}) => 
             window.removeEventListener('popstate', handlePopState);
         };
     }, [navigate]);
-    const handleClick = ({item}:CartItem) => {
+    const handleClick = (item:CartItem) => {
         setIsHidden(true);
         removeFromWishList(item?.id - 1);
         localStorage.setItem(`wishlist-item-${item.id}`, "false");

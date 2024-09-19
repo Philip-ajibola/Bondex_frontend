@@ -1,3 +1,4 @@
+
 declare interface CustomButtonProps{
     text: string;
     style: string;
@@ -12,4 +13,18 @@ declare interface CartItem {
     newPrice: string;
     oldPrice: string;
     description: string;
+    discount:string;
+}
+declare interface Category{
+    image: string;
+    name:string,
+}
+declare interface OurProduct{
+    id:number,
+    productName:string,
+    productImage:string,
+    newPrice:string,
+    oldPrice:string,
+    description:string,
+    discount: string,
 }

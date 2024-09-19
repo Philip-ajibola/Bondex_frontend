@@ -4,12 +4,12 @@ import axios from 'axios';
 import './styles.css';
 import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 import {useNavigate} from "react-router-dom";
-const PaymentForm = ({ amount }:number) => {
+const PaymentForm = ({ amount }:{amount:number}) => {
     const stripe = useStripe();
     const navigate = useNavigate();
     const elements = useElements();
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<any | null>(null);
     const [success, setSuccess] = useState(false);
     console.log(amount)
     const handleSubmit = async (event: React.FormEvent) => {
@@ -47,7 +47,7 @@ const PaymentForm = ({ amount }:number) => {
             }
 
 
-        } catch (err) {
+        } catch (err:any) {
             setError(err.response?.data?.error || 'An error occurred while processing your payment.');
         } finally {
             setIsLoading(false);
