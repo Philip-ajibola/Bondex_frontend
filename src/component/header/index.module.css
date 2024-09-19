@@ -101,6 +101,36 @@
     .header{
         display: none;
     }
+
+    .mobileHeader{
+        padding: 0;
+        h1{
+            font-size: 0.6rem;
+        }
+        .imgContainer{
+            gap: 15px;
+            .imgDiv{
+                width: 15px;
+                img{
+                    width: 14px;
+                }
+            }
+        }
+        .searchBar{
+            .search{
+                width: 80px;
+            }
+
+            .search::placeholder{
+                    font-size: 0.5rem;
+            }
+
+            img{
+                width: 14px;
+            }
+        }
+
+    }
     .container{
         margin-bottom: 10px;
     }

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import  { useState, useContext } from 'react';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import { CartContext } from "../../context.tsx";
@@ -87,18 +87,41 @@ export const Header = () => {
 
             <div className={style.mobileHeader}>
                 <h1>Bobby's Store</h1>
+                <div className={style.searchDiv}>
+                    <div className={style.searchBar}>
+                        <input type="text" placeholder="What are you looking for?" className={style.search}/>
+                        <div className={style.searchLogo}>
+                            <img src={image} alt="Search"/>
+                        </div>
+                    </div>
+                    <div className={style.imgContainer}>
+                        <div className={style.imgDiv}>
+                            <img src={image1} onClick={handleClickWishList} alt="WishList"/>
+                            {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
+                        </div>
+                        <div className={style.imgDiv}>
+                            <img src={image2} onClick={handleClickCart} alt="Cart"/>
+                            {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
+                        </div>
+                        <div className={style.imgDiv}>
+                            <img src={profile} alt="Profile" onClick={() => navigate('/profile')}/>
+                        </div>
+                    </div>
+                </div>
                 <button onClick={toggleMenu} className={style.menu}>
-                    <img className={style.menuImg} src={menuLogo} alt="Menu" />
+                    <img className={style.menuImg} src={menuLogo} alt="Menu"/>
                 </button>
             </div>
-
             {menuOpen && (
                 <div className={style.mobileMenu}>
                     <Link className={style.link} to={'/home'} onClick={toggleMenu}>Home</Link>
                     <Link className={style.link} to={'/contact'} onClick={toggleMenu}>Contact</Link>
-                    <Link  className={style.link} to={'/about-us'} onClick={toggleMenu}>About</Link>
+                    <Link className={style.link} to={'/about-us'} onClick={toggleMenu}>About</Link>
                     {checker ? (
-                        <Link className={style.link} to={'/sign-up'} onClick={() => { handleLogOut(); toggleMenu(); }}>Sign Out</Link>
+                        <Link className={style.link} to={'/sign-up'} onClick={() => {
+                            handleLogOut();
+                            toggleMenu();
+                        }}>Sign Out</Link>
                     ) : (
                         <Link className={style.link} to={'/sign-up'} onClick={toggleMenu}>Sign Up</Link>
                     )}
