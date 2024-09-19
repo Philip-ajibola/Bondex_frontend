@@ -1,8 +1,8 @@
 import style from "./index.module.css";
-import eye from "../../../assets/Fill Eye.png";
 import rating from "../../../assets/Frame 566.png";
 import CustomButton from "../../../component/customeButton/customButton.tsx";
 import Cart from "../../../assets/Cart1 (1).png";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ForYou = ({item})=>{
     return (
@@ -14,7 +14,7 @@ const ForYou = ({item})=>{
                         <img  className={style.realImage1} src={item.productImage} alt={"product"}/>
                     </div>
                     <div className={style.logo}>
-                        <img src={eye} alt={"logo"} className={style.eye}/>
+                        <DeleteIcon style={{color:'black'}}/>
                     </div>
                     <CustomButton text={"Add To Cart"} style={style.customButton} image={Cart}/>
                 </div>

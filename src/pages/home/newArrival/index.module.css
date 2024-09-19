@@ -4,6 +4,9 @@
     width: 100%;
     gap: 20px;
 }
+button{
+    cursor: pointer;
+}
 .productDiv{
    display: flex;
     width: 100%;
@@ -66,7 +69,7 @@
     }
     .description{
         bottom: 0;
-        top: 150px;
+        top: 140px;
         left: 30px;
         right: 0;
         height: 70px;
@@ -154,14 +157,16 @@
    .secondProductDiv{
        width: 100%;
        .product2{
-           width: 98%;
+           width: 97%;
            align-self: center;
            .img{
-               width: 220px;
+               width: 190px;
+               border-top-right-radius: 8px;
+               border-bottom-right-radius: 8px;
            }
            .description{
                bottom: 0;
-               top: 130px;
+               top: 120px;
                left: 20px;
                right: 0;
                height: 80px;
@@ -178,7 +183,11 @@
 .link{
     color: whitesmoke;
     font-weight: bold;
+    background-color: transparent;
+    border: none;
+
 }
+
 
 @media only screen and (min-width: 700px) and (max-width: 1050px){
     .productDiv{

@@ -1,14 +1,21 @@
 import CustomButton from "../../component/customeButton/customButton.tsx";
 import style from './index.module.css';
-import {data} from "../home/flash_sale/data.ts";
+import data from "../home/flash_sale/data.ts";
 import arrowDown from "../../assets/Drop-Down-Small.png";
 import arrowUp from "../../assets/Drop-Up-Small.png";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {CartContext} from "../../context.tsx";
+import {useNavigate} from "react-router-dom";
 
 const Cart = () => {
+    const { cartItems } = useContext(CartContext);
+    const navigate = useNavigate();
     const [quantities, setQuantities] = useState<number[]>(data.map(() => 1));
     let totalPrice= 0;
 
+    const  handlePayment = ({amount}:number)=>{
+        navigate('/check-out',{state:{amount:totalPrice}})
+    }
     const incrementQuantity = (index: number) => {
         const newQuantities = [...quantities];
         newQuantities[index] += 1;
@@ -27,12 +34,11 @@ const Cart = () => {
         price = price.slice(1)
         const newPrice = Number(price)
         totalPrice +=newPrice;
+        console.log(totalPrice);
         return (newPrice * quantity).toFixed(2);
+
     };
 
-    const totalCartPrice = quantities.reduce((total, qty, index) => {
-        return total + qty * data[index].newPrice;
-    }, 0);
 
     return (
         <div className={style.container}>
@@ -44,7 +50,7 @@ const Cart = () => {
                     <p>SubTotal</p>
                 </div>
                 <div className={style.fDiv2}>
-                    {data.slice(0, 3).map((item, index) => (
+                    {cartItems.map((item, index) => (
                         <div key={item.id} className={style.fDiv2_1}>
                             <div className={style.fDiv2_1_1}>
                                 <img src={item.productImage} alt={"Product Image"}/>
@@ -78,7 +84,7 @@ const Cart = () => {
                     <p className={style.p}>Cart Total</p>
                     <div className={style.sDiv1}>
                         <p className={style.p2}>Subtotal</p>
-                        <p className={style.p2}>{totalCartPrice.toFixed(2)}</p>
+                        <p className={style.p2}>${totalPrice.toFixed(2)}</p>
                     </div>
                     <div className={style.sDiv1}>
                         <p className={style.p2}>Shipping</p>
@@ -89,7 +95,7 @@ const Cart = () => {
                         <p className={style.p2}>${totalPrice.toFixed(2)}</p>
                     </div>
                 </div>
-                <CustomButton text={'Process To CheckOut'} style={style.downButton}/>
+                <CustomButton text={'Process To CheckOut'} style={style.downButton} onPress={()=>handlePayment(totalPrice)}/>
             </div>
         </div>
     );

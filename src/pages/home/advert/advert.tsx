@@ -1,8 +1,15 @@
 import CustomButton from "../../../component/customeButton/customButton.tsx";
-import image from '../../../assets/Frame 694.png'
-import data from "./data.ts";
+import Data from "./data.ts";
 import style from './index.module.css'
+import data from "../../home/flash_sale/data.ts";
+import {useNavigate} from "react-router-dom";
 const Advert = ()=>{
+    const product = data[16];
+    const navigate = useNavigate();
+    const onProductClick = ()=>{
+        navigate('/one-product',{state:{data:product}});
+    }
+
     return (
         <div className={style.container}>
             <div className={style.motherContainer}>
@@ -12,7 +19,7 @@ const Advert = ()=>{
                         Enhance Your Music Experience
                     </div>
                     <div className={style.secondDiv}>
-                        {data.map((item) => (
+                        {Data.map((item) => (
                             <div className={style.firstDiv1}>
                                 <p>{item.number}</p>
                                 <p>{item.day}</p>
@@ -21,11 +28,11 @@ const Advert = ()=>{
                     </div>
                 </div>
                 <div className={style.secondContainer}>
-                    <img className={style.img} src={image} alt={'Image'}/>
+                    <img className={style.img} src={product.productImage} alt={'Image'}/>
                 </div>
             </div>
 
-            <CustomButton text={'Buy Now'} style={style.customButton}/>
+            <CustomButton text={'Buy Now'} style={style.customButton} onPress={()=>onProductClick()}/>
         </div>
     )
 }

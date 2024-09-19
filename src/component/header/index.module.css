@@ -16,6 +16,22 @@
     gap: 40px;
     padding: 0 20px;
 }
+.imgDiv{
+    position: relative;
+    cursor: pointer;
+}
+.number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: red;
+    width:16px;
+    height: 16px;
+    border-radius: 6px;
+    top: -5px;
+    right: -5px;
+}
 .searchBar{
     display: flex;
     position: relative;
@@ -69,4 +85,12 @@
         height: 30px;
         width: 30px;
     }
+}
+@media screen and (max-width: 1200px) {
+    .header{
+        h1{
+            font-size: 1rem;
+        }
+    }
+
 }

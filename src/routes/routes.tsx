@@ -10,6 +10,8 @@ import AboutUs from "../pages/aboutUs/aboutUs.tsx";
 import Contact from "../pages/contact/contact.tsx";
 import OneProduct from "../pages/item/item.tsx";
 import NotFoundPage from "../pages/notFoundPage/notFound.tsx";
+import ViewAllProduct from "../pages/viewAllProduct/viewAllProduct.tsx";
+import StripeCheckout from "../stripePayment/checkOut.tsx";
 
 export const ROUTE = [
     {
@@ -18,10 +20,10 @@ export const ROUTE = [
         children:[
             {
                 path: "",
-                element:<Home/>
+                element:<AboutUs/>
             },
             {
-                path: "home",
+                path: "/home",
                 element:<Home/>
             },
             {
@@ -63,6 +65,18 @@ export const ROUTE = [
             {
                 path: "/not-found",
                 element:<NotFoundPage/>
+            },
+            {
+                path: "/view-all",
+                element:<ViewAllProduct/>
+            },
+            {
+                path: "/check-out",
+                element:<Checkout/>
+            },
+            {
+                path: "/stripe-check-out",
+                element:<StripeCheckout/>
             },
         ]
 

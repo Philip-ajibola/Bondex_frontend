@@ -3,9 +3,15 @@ import product2 from '../../../assets/attractive-woman-wearing-hat-posing-black-
 import product3 from '../../../assets/Frame 706.png'
 import product4 from '../../../assets/Frame 707.png'
 import SmallDiv from "../../../component/smallDiv/smallDiv.tsx";
-import style from './index.module.css'
-import {Link} from "react-router-dom";
+import style from './index.module.css';
+import Data from './data';
+import {useNavigate} from "react-router-dom";
 const NewArrival = ()=>{
+    const navigate = useNavigate();
+    const handleOnclick = ({product}:CartItem) =>{
+        console.log("onProductClick",product)
+        navigate('/one-product',{state:{data:product}});
+    }
     return (
         <div className={style.container}>
             <SmallDiv item={"Featured"} text={"New Arrival"}/>
@@ -17,7 +23,7 @@ const NewArrival = ()=>{
                     <div className={style.description}>
                         <p>Play Station 5</p>
                         <p className={style.p}>Black and White version of the PS5 coming out on sale.</p>
-                        <Link to={"#"} className={style.link}>Shop Now</Link>
+                        <button className={style.link} onClick={()=>handleOnclick(Data[0])}>Shop Now</button>
                     </div>
                 </div>
                 <div className={style.secondProductDiv}>
@@ -28,7 +34,7 @@ const NewArrival = ()=>{
                             <div className={style.description}>
                                 <p>Women's Collections</p>
                                 <p className={style.p}>Featured woman collections that give you another vibe.</p>
-                                <Link to={"#"} className={style.link}>Shop Now</Link>
+                                <button  className={style.link} onClick={()=>handleOnclick(Data[1])}>Shop Now</button>
                             </div>
                     </div>
                     <div className={style.thirdProductDiv}>
@@ -39,7 +45,7 @@ const NewArrival = ()=>{
                                 <div className={style.description}>
                                     <p>Speakers</p>
                                     <p className={style.p}>Amazon wireless speakers.</p>
-                                    <Link to={"#"} className={style.link}>Shop Now</Link>
+                                    <button  className={style.link} onClick={()=>handleOnclick(Data[2])}>Shop Now</button>
                                 </div>
                             </div>
                         <div className={style.product3}>
@@ -49,7 +55,7 @@ const NewArrival = ()=>{
                                 <div className={style.description}>
                                     <p>Perfumes</p>
                                     <p className={style.p}>GUCCI INTENSE OUD EDP</p>
-                                    <Link to={"#"} className={style.link}>Shop Now</Link>
+                                    <button className={style.link} onClick={()=>handleOnclick(Data[3])}>Shop Now</button>
                                 </div>
                             </div>
                     </div>

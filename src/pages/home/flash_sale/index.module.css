@@ -23,6 +23,13 @@
     font-weight: bold;
     font-size: large;
 }
+.dot{
+    display:flex;
+    align-items:self-end;
+    font-size:2rem;
+    color:red;
+    margin-right: 15px;
+}
 .product2{
     display: flex;
     width: 100%;

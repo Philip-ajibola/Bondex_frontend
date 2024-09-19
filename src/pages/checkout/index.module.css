@@ -54,6 +54,9 @@
         color: red;
     }
 }
+.errorText{
+    color: red;
+}
 .checkBoxDiv{
     width: 95%;
     display: flex;

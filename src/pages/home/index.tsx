@@ -7,7 +7,7 @@ import Advert from "./advert/advert.tsx";
 import OurProduct from "./ourProduct/ourProduct.tsx";
 import NewArrival from "./newArrival/newArrival.tsx";
 import Services from "./service/service.tsx";
-import {Footer} from "../../component/footer";
+
 
 export const Home = ()=>{
     return(

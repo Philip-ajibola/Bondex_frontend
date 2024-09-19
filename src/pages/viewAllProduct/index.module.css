@@ -1,0 +1,48 @@
+.motherDiv{
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    padding: 100px 10px;
+}
+.firstDiv{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    align-items: flex-start;
+}
+
+.p{
+    margin: 0 0 20px 0;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #8f8b8b;
+}
+.container{
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.innerDiv{
+    width: 100%;
+}
+
+@media screen and (max-width: 600px){
+    .motherDiv{
+        padding: 50px 0;
+
+    }
+    .container{
+        width: 98%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+@media screen and (min-width: 601px) and (max-width: 1100px){
+
+    .container{
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+}

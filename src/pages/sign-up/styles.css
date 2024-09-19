@@ -1,0 +1,81 @@
+/* src/styles.css */
+.mother-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 10px;
+}
+.verification-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    width: 40%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+p {
+    color: #666;
+    font-size: 14px;
+}
+
+.verification-form {
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.verify-btn {
+    background-color:red;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.4s;
+}
+.verify-btn:hover{
+    padding: 18px 16px;
+}
+.verify-btn:active {
+    background-color: #e39191;
+}
+
+.resend-text {
+    margin-top: 15px;
+    color: #666;
+}
+
+.resend-btn {
+    background: none;
+    border: none;
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.resend-btn:hover {
+    color: #e69898;
+}

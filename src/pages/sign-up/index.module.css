@@ -47,6 +47,10 @@
             box-shadow: 0 8px 10px rgba(0, 0, 0, 0.6);
             cursor: pointer;
         }
+        .button1:disabled, .button2:disabled{
+            cursor: not-allowed;
+            background-color: #e3e0e0;
+        }
         .button2{
             display: flex;
             background-color: white;

@@ -1,7 +1,7 @@
-const customButton = ({text,style,image, onPress}:CustomButtonProps)=>{
+const customButton = ({text,style,image, onPress,disabled}:CustomButtonProps)=>{
     return(
         <>
-            <button className={style} onClick={onPress}>
+            <button className={style} onClick={onPress} disabled={disabled}>
                 {image && <img src={image} alt={"IMG"}/>}
                 {text}</button>
         </>

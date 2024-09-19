@@ -1,10 +1,21 @@
 import SmallDiv from "../../../component/smallDiv/smallDiv.tsx";
 import CustomButton from "../../../component/customeButton/customButton.tsx";
 import style from './index.module.css';
-import {data} from "../flash_sale/data.ts";
+import data from "../flash_sale/data.ts";
 import Item from "../../../component/item/item.tsx";
+import {useNavigate} from "react-router-dom";
+
 
 const BestSellingProduct = ()=>{
+    const navigate = useNavigate();
+    const onProductClick = ({index}:number)=>{
+        const product = data[index];
+        navigate('/one-product',{state:{data:product}});
+    }
+    const handleOnClick = ()=>{
+        navigate('/view-all',{state:{data: data.slice(0,6),header: "Our Best Selling Products"}});
+    }
+
     return(
         <div className={style.container}>
             <div className={style.firstContainer}>
@@ -12,13 +23,13 @@ const BestSellingProduct = ()=>{
                     <SmallDiv item={'This Month'} text={'Best Selling Product'}/>
                 </div>
                 <div >
-                    <CustomButton text={'View All'} style={style.secondDiv}/>
+                    <CustomButton text={'View All'} style={style.secondDiv} onPress={()=>handleOnClick()}/>
                 </div>
             </div>
             <div className={style.secondContainer}>
-                {data.slice(0,6).map((item)=>(
+                {data.slice(0,6).map((item,index)=>(
                     <div className={style.itemContainer}>
-                        <Item item={item}/>
+                        <Item item={item} onclick={()=>onProductClick(index)}/>
                     </div>
 
                 ))}
