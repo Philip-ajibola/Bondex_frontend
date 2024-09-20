@@ -6,6 +6,7 @@ import delivery from '../../assets/icon-delivery.png'
 import Return from '../../assets/Icon-return.png'
 import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const OneProduct = ()=> {
     const navigate = useNavigate()
@@ -16,19 +17,25 @@ const OneProduct = ()=> {
     const [quantities, setQuantities] = useState(0);
 
     const incrementQuantity = () => {
-        setQuantities(quantities+1);
-        setSubtotal(quantities*quantities);
+        setQuantities(prevQuantities => {
+            const updatedQuantity = prevQuantities + 1;
+            setSubtotal(parseFloat(product.newPrice.slice(1)) * updatedQuantity);
+            return updatedQuantity;
+        });
     };
 
     const decrementQuantity = () => {
         if (quantities > 0) {
-            setQuantities(quantities-1);
-            setSubtotal(quantities*quantities);
+            setQuantities(prevQuantities => {
+                const updatedQuantity = prevQuantities - 1;
+                setSubtotal(parseFloat(product.newPrice.slice(1)) * updatedQuantity);
+                return updatedQuantity;
+            });
         }
     };
     const handleBuyNow = ()=>{
         if(subTotal===0) {
-            window.alert("You Haven't Tell us the How Many You want to buy Please select how many you want to buy!");
+            toast.info("You Haven't Tell us the How Many You want to buy Please select how many you want to buy!");
         }else navigate('/check-out',{state:{amount:subTotal}})
     }
 
@@ -55,7 +62,7 @@ const OneProduct = ()=> {
                         <p>{String(quantities).padStart(2, '0')}</p>
                         <button className={style.decrease} onClick={() => decrementQuantity()}>-</button>
                     </div>
-                    <CustomButton text={subTotal !==0 ?`Buy Now At ${subTotal}`:"Buy Now"} style={style.button} onPress={()=>handleBuyNow()}/>
+                    <CustomButton text={subTotal !==0 ?`Buy Now At $${subTotal}`:"Buy Now"} style={style.button} onPress={()=>handleBuyNow()}/>
                 </div>
                 <div className={style.secondDiv_4}>
                     <div className={style.secondDiv_4_1}>

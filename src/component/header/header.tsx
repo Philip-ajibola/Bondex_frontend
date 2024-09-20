@@ -18,10 +18,10 @@ export const Header = () => {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState<CartItem[]>([]);
     const products = data;
-    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
-    const searchAreaRef = useRef(null);
+    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn")|| "false");
+    const searchAreaRef = useRef<any>(null);
 
     const handleClickWishList = () => {
         if (isLoggedIn) {
@@ -52,7 +52,7 @@ export const Header = () => {
         setMenuOpen(!menuOpen);
     };
 
-    const handleSearch = (event) => {
+    const handleSearch = (event:any) => {
         const query = event.target.value.toLowerCase();
         setSearchQuery(query);
 
@@ -62,7 +62,7 @@ export const Header = () => {
         setFilteredProducts(filtered);
     };
 
-    const handleProductClick = (product) => {
+    const handleProductClick = (product:CartItem) => {
         if (isLoggedIn) {
             navigate(`/one-product`, { state: { data: product } });
             setSearchQuery('');
@@ -70,7 +70,7 @@ export const Header = () => {
         } else window.alert("You Are Not Signed In");
     };
 
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event:any) => {
         if (
             searchAreaRef.current &&
             !searchAreaRef.current.contains(event.target)
@@ -89,7 +89,7 @@ export const Header = () => {
 
     const checker = location.pathname !== '/' && (location.pathname !== '/sign-in' && location.pathname !== '/sign-up');
 
-    const handleNavigation = (path) => {
+    const handleNavigation = (path:string) => {
         if ( location.pathname !== '/') {
             navigate(path);
         } else {
@@ -117,7 +117,7 @@ export const Header = () => {
                         <div className={style.searchBar}>
                             <input
                                 type="text"
-                                placeholder="What are you looking for?"
+                                placeholder="Search Product"
                                 className={style.search}
                                 value={searchQuery}
                                 onChange={handleSearch}
@@ -163,7 +163,7 @@ export const Header = () => {
                 {checker && (
                     <div className={style.searchDiv}>
                         <div className={style.searchBar}>
-                            <input type="text" placeholder="What are you looking for?" className={style.search} onChange={handleSearch} />
+                            <input type="text" placeholder="Search Product" className={style.search} onChange={handleSearch} />
                             <div className={style.searchLogo}>
                                 <img src={image} alt="Search" />
                             </div>

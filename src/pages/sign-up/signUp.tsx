@@ -6,6 +6,7 @@ import image1 from '../../assets/Icon-Google.png';
 import {useSignUp} from '@clerk/clerk-react';
 import {useNavigate} from 'react-router-dom';
 import './styles.css'
+import {toast} from "react-toastify";
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -35,7 +36,7 @@ const SignUp = () => {
             setShowVerification(true);
             setLoading(true)
         } catch (err:any) {
-            window.alert(`Error:  ${err.errors[0].longMessage}`);
+            toast.error(`Error:  ${err.errors[0].longMessage}`);
             console.log(err.message);
         }
     };

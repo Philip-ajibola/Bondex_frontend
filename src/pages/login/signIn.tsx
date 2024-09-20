@@ -4,6 +4,7 @@ import CustomButton from "../../component/customeButton/customButton.tsx";
 import {Link, useNavigate} from "react-router-dom";
 import React, {useState} from "react";
 import {useSignIn} from "@clerk/clerk-react";
+import {toast} from "react-toastify";
 const SignIn = ()=>{
     const navigate = useNavigate();
     const [form, setForm] = useState({
@@ -29,9 +30,11 @@ const SignIn = ()=>{
 
             } else {
                 console.error(JSON.stringify(signInAttempt, null, 2))
+                toast.error(JSON.stringify(signInAttempt, null, 2))
             }
         } catch (err) {
             console.error(JSON.stringify(err, null, 2))
+            toast.error(JSON.stringify(err, null, 2))
         }
     }, [ isLoaded, form.email, form.password])
 
@@ -52,10 +55,11 @@ const SignIn = ()=>{
                     <input
                         className={style.input}
                         placeholder={'Password'}
+                        type='password'
                         onChange={(e)=>setForm({...form, password: e.target.value})}
 
                     />
-                    <CustomButton text={"Sign Up"} style={style.button1} onPress={onSignInPress}/>
+                    <CustomButton text={"Sign In"} style={style.button1} onPress={onSignInPress}/>
                     <Link to={'#'} className={style.forgetPassword}>Forgot Your  Password??</Link>
                     <p className={style.lastP}>Don't Have An Account???.. <span>
                         <Link to={'/sign-up'} className={style.span}>Sign Up</Link></span>

@@ -6,6 +6,8 @@ import { ClerkProvider } from '@clerk/clerk-react';
 import { CartProvider } from './context.tsx';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const stripePromise = loadStripe('pk_test_51PwDgM01eRG02uydJKT6Lp3sV6zXlj7Juo49vk60DnHL245UBfltkm2NO4LzutqfxtyZz77xZF4KpRpMXaNugQ3C00q43ZCVmW');
 
@@ -15,8 +17,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <CartProvider>
                 <Elements stripe={stripePromise}>
                     <App />
+                    <ToastContainer/>
                 </Elements>
             </CartProvider>
+
         </BrowserRouter>
     </ClerkProvider>
 );

@@ -8,7 +8,7 @@ declare interface CustomButtonProps{
 }
 declare interface CartItem {
     id: number;
-    productImage: string;
+    productImage: any;
     productName: string;
     newPrice: string;
     oldPrice: string;

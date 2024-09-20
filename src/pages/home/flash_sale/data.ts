@@ -16,7 +16,7 @@ import product15 from '../../../assets/Frame 608 (1).png';
 import product16 from '../../../assets/Frame 608 (2).png';
 import product17 from '../../../assets/Frame 694.png'
 
- const data = [
+ const data:CartItem[] = [
     {
         id: 1,
         discount:"-40%",

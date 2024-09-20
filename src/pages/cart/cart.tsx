@@ -6,9 +6,10 @@ import arrowUp from "../../assets/Drop-Up-Small.png";
 import {useContext, useState} from "react";
 import {CartContext} from "../../context.tsx";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const Cart = () => {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems,cancelOrder } = useContext(CartContext);
     const navigate = useNavigate();
     const [quantities, setQuantities] = useState<number[]>(data.map(() => 1));
     let totalPrice= 0;
@@ -38,7 +39,11 @@ const Cart = () => {
         return (newPrice * quantity).toFixed(2);
 
     };
-
+const handleCancelOrder = ()=>{
+    cancelOrder();
+    toast.warning("You Cancelled Your Order")
+    navigate('/home')
+}
 
     return (
         <div className={style.container}>
@@ -75,8 +80,8 @@ const Cart = () => {
                     ))}
                 </div>
                 <div className={style.fDiv3}>
-                    <CustomButton text={'Return To Shop'} style={style.button}/>
-                    <CustomButton text={'Cancel Cart'} style={style.button}/>
+                    <CustomButton text={'Return To Shop'} style={style.button} onPress={()=>navigate('/home')}/>
+                    <CustomButton text={'Cancel Cart'} style={style.button} onPress={()=>handleCancelOrder()}/>
                 </div>
             </div>
             <div className={style.secondContainer}>

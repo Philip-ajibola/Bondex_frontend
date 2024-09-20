@@ -1,4 +1,5 @@
 import React, { createContext, useState, ReactNode, useEffect } from 'react';
+import {toast} from "react-toastify";
 
 interface CartItem {
     id: number;
@@ -16,6 +17,7 @@ interface CartContextType {
     addToCart: (item: CartItem) => void;
     addToWishList: (item: CartItem) => void;
     removeFromWishList: (index: number) => void;
+    cancelOrder: () => void;
 }
 
 interface CartProviderProps {
@@ -28,6 +30,7 @@ const CartContext = createContext<CartContextType>({
     addToCart: () => {},
     addToWishList: () => {},
     removeFromWishList: () => {},
+    cancelOrder: () => {},
 });
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
@@ -54,14 +57,23 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         setCartItems(prev => {
             const updatedCart = [...prev, item];
             saveToLocalStorage('cartItems', updatedCart);
+            toast.success(`You Added ${item.productName} to Your Cart`)
+
             return updatedCart;
         });
     };
+    const cancelOrder = ()=>{
+        setWishList([]);
+        localStorage.removeItem('cartItems');
+        localStorage.removeItem('wishList');
+        toast.info("Your order has been canceled and the cart is empty.");
+    }
 
     const addToWishList = (item: CartItem) => {
         setWishList(prev => {
             const updatedWishList = [...prev, item];
             saveToLocalStorage('wishList', updatedWishList);
+            toast.success(`You Added ${item.productName} to Your Wish List`)
             return updatedWishList;
         });
     };
@@ -70,12 +82,13 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         setWishList(prev => {
             const updatedWishList = prev.filter((_, i) => i !== index);
             saveToLocalStorage('wishList', updatedWishList);
+            toast.warning(`You Removed An item From Your WishList`)
             return updatedWishList;
         });
     };
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, wishList, addToWishList, removeFromWishList }}>
+        <CartContext.Provider value={{ cartItems, addToCart, wishList, addToWishList, removeFromWishList,cancelOrder }}>
             {children}
         </CartContext.Provider>
     );

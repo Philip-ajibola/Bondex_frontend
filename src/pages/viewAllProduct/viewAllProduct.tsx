@@ -8,6 +8,7 @@ const ViewAllProduct = () => {
     const { state } = location;
     const data = state?.data;
     const header = state?.header;
+    console.log(data)
     const handleOnclick = (product:CartItem)=>{
         navigate('/one-product',{state:{data:product}});
     }
@@ -16,7 +17,7 @@ const ViewAllProduct = () => {
             <div className={style.firstDiv}>
                 <p className={style.p}>{header}</p>
                 <div className={style.container}>
-                    {data.map(({item}:{item:CartItem}) => (
+                    {data.map((item:CartItem) => (
                         <div className={style.innerDiv}>
                             <Item item={item} onclick={()=>handleOnclick(item)}/>
                         </div>

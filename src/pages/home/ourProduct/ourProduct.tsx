@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 
 const OurProduct = () =>{
     const navigate = useNavigate();
-    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn")|| "false");
     const onProductClick = (index:number)=>{
         if(isLoggedIn) {
             const product = data[index - 1];

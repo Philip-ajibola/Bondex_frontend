@@ -4,22 +4,23 @@ import style from './index.module.css';
 import data from "../flash_sale/data.ts";
 import Item from "../../../component/item/item.tsx";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 
 const BestSellingProduct = ()=>{
     const navigate = useNavigate();
-    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn")|| "false");
     const onProductClick = (index: number)=>{
         if(isLoggedIn){
             const product = data[index];
             navigate('/one-product',{state:{data:product}});
-        }else window.alert("You Are Not Logged In")
+        }else toast.warning("You Are Not Logged In")
 
     }
     const handleOnClick = ()=>{
         if(isLoggedIn){
             navigate('/view-all',{state:{data: data.slice(0,6),header: "Our Best Selling Products"}});
-        }else window.alert("You Are Not Logged In");
+        }else toast.warning("You Are Not Logged In");
     }
 
     return(
