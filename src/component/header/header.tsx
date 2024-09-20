@@ -211,7 +211,7 @@ export const Header = () => {
                             toggleMenu();
                         }}>Sign Out</button>
                     ) : (
-                        <button className={style.button} onClick={() => navigate('/sign-up')}>Sign Up</button>
+                        <button className={style.button} onClick={() => navigate('/sign-in')}>Sign In</button>
                     )}
                 </div>
             )}
