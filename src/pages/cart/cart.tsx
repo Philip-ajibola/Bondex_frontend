@@ -41,7 +41,6 @@ const Cart = () => {
     };
 const handleCancelOrder = ()=>{
     cancelOrder();
-    toast.warning("You Cancelled Your Order")
     navigate('/home')
 }
 
