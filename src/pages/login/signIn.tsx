@@ -34,7 +34,7 @@ const SignIn = ()=>{
             }
         } catch (err) {
             console.error(JSON.stringify(err, null, 2))
-            toast.error(JSON.stringify(err, null, 2))
+            toast.error(JSON.stringify(err.message, null, 2))
         }
     }, [ isLoaded, form.email, form.password])
 

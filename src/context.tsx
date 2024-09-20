@@ -18,6 +18,7 @@ interface CartContextType {
     addToWishList: (item: CartItem) => void;
     removeFromWishList: (index: number) => void;
     cancelOrder: () => void;
+    afterSuccessFulPayment : ()=>void;
 }
 
 interface CartProviderProps {
@@ -31,6 +32,7 @@ const CartContext = createContext<CartContextType>({
     addToWishList: () => {},
     removeFromWishList: () => {},
     cancelOrder: () => {},
+    afterSuccessFulPayment:()=>{}
 });
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
@@ -62,10 +64,17 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             return updatedCart;
         });
     };
-    const cancelOrder = ()=>{
-        setWishList([]);
+    const afterSuccessFulPayment = ()=>{
+        setCartItems([]);
         localStorage.removeItem('cartItems');
-        localStorage.removeItem('wishList');
+    }
+    const cancelOrder = ()=>{
+        if(cartItems.length===0) {
+            toast.info("There is no Item in the Cart");
+            return;
+        }
+        setCartItems([]);
+        localStorage.removeItem('cartItems');
         toast.info("Your order has been canceled and the cart is empty.");
     }
 
@@ -88,7 +97,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, wishList, addToWishList, removeFromWishList,cancelOrder }}>
+        <CartContext.Provider value={{ cartItems, addToCart, wishList, addToWishList, removeFromWishList,cancelOrder,afterSuccessFulPayment }}>
             {children}
         </CartContext.Provider>
     );

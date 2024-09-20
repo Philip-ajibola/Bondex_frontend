@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import './styles.css';
 import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import {CartContext} from "../context.tsx";
 const PaymentForm = ({ amount }:{amount:number}) => {
     const stripe = useStripe();
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ const PaymentForm = ({ amount }:{amount:number}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<any | null>(null);
     const [success, setSuccess] = useState(false);
+    const {afterSuccessFulPayment} = useContext(CartContext);
     console.log(amount)
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -36,13 +38,16 @@ const PaymentForm = ({ amount }:{amount:number}) => {
                     card: cardElement!,
                 },
             });
+            const handleOnclick = ()=>{
+
+            }
+
 
             if (error) {
                 setError(error.message);
             } else if (paymentIntent?.status === 'succeeded') {
                 setSuccess(true);
-                const cartItems:CartItem[] = [];
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                afterSuccessFulPayment()
                 toast.success("Payment successful");
                 navigate('/home')
             }
