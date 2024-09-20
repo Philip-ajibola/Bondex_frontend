@@ -4,6 +4,7 @@ import data from "../flash_sale/data.ts";
 import Item from "../../../component/item/item.tsx";
 import CustomButton from "../../../component/customeButton/customButton.tsx";
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const OurProduct = () =>{
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const OurProduct = () =>{
     const handleViewAllProduct = ()=>{
         if(isLoggedIn) {
             navigate('/view-all', {state: {data: data.slice(0, 16), header: "Our Products"}});
-        }
+        } else toast.warning("You Are Not Logged In. Log In To View All Our Products");
     }
 
     return(
