@@ -9,6 +9,7 @@ import image2 from '../../assets/Cart1.png';
 import style from './index.module.css';
 import data from "../../pages/home/flash_sale/data.ts";
 import MenuIcon from '@mui/icons-material/Menu';
+import {toast} from "react-toastify";
 
 export const Header = () => {
     const { cartItems, wishList } = useContext(CartContext);
@@ -26,21 +27,21 @@ export const Header = () => {
     const handleClickWishList = () => {
         if (isLoggedIn) {
             if (wishList.length === 0) {
-                window.alert("No Item Found In Wish List");
+                toast.warning("No Item Found In Wish List");
             } else {
                 navigate('/wish-list', { state: { data: wishList } });
             }
-        } else window.alert("You Are Not Signed In");
+        } else toast.warning("You Are Not Signed In");
     };
 
     const handleClickCart = () => {
         if (isLoggedIn) {
             if (cartItems.length === 0) {
-                window.alert("No Item Found In Cart");
+                toast.warning("No Item Found In Cart");
             } else {
                 navigate('/cart', { state: { data: cartItems } });
             }
-        } else window.alert("You Are Not Signed In");
+        } else toast.warning("You Are Not Signed In");
     };
 
     const handleLogOut = () => {
@@ -93,7 +94,7 @@ export const Header = () => {
         if ( location.pathname !== '/') {
             navigate(path);
         } else {
-            window.alert("You Are Not Logged In");
+            toast.warning("You Are Not Logged In");
         }
     };
 
@@ -208,7 +209,6 @@ export const Header = () => {
                     {checker ? (
                         <button className={style.button} onClick={() => {
                             handleLogOut();
-                            toggleMenu();
                         }}>Sign Out</button>
                     ) : (
                         <button className={style.button} onClick={() => navigate('/sign-in')}>Sign In</button>
