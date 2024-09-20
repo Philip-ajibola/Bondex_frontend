@@ -49,7 +49,9 @@ const PaymentForm = ({ amount }:{amount:number}) => {
                 setSuccess(true);
                 afterSuccessFulPayment()
                 toast.success("Payment successful");
-                navigate('/home')
+                setTimeout(() => {
+                    navigate('/home');
+                }, 3000);
             }
 
 
