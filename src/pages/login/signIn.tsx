@@ -2,7 +2,7 @@ import image from '../../assets/Side Image.png';
 import style from './index.module.css'
 import CustomButton from "../../component/customeButton/customButton.tsx";
 import {Link, useNavigate} from "react-router-dom";
-import React, {useState} from "react";
+import  {useState} from "react";
 import {useSignIn} from "@clerk/clerk-react";
 import {toast} from "react-toastify";
 const SignIn = ()=>{
@@ -13,7 +13,7 @@ const SignIn = ()=>{
     });
 
     const { signIn, setActive, isLoaded } = useSignIn()
-    const onSignInPress = React.useCallback(async () => {
+    const onSignInPress = async () => {
         if (!isLoaded) return
 
 
@@ -34,9 +34,9 @@ const SignIn = ()=>{
             }
         } catch (err:any) {
             console.error(JSON.stringify(err, null, 2))
-            toast.error(JSON.stringify(err.message, null, 2))
+            toast.error(JSON.stringify(err, null, 2))
         }
-    }, [ isLoaded, form.email, form.password])
+    }
 
     return(
         <div className={style.container}>
@@ -59,7 +59,7 @@ const SignIn = ()=>{
                         onChange={(e)=>setForm({...form, password: e.target.value})}
 
                     />
-                    <CustomButton text={"Sign In"} style={style.button1} onPress={onSignInPress}/>
+                    <CustomButton text={"Sign In"} style={style.button1} onPress={()=>onSignInPress()}/>
                     <Link to={'#'} className={style.forgetPassword}>Forgot Your  Password??</Link>
                     <p className={style.lastP}>Don't Have An Account???.. <span>
                         <Link to={'/sign-up'} className={style.span}>Sign Up</Link></span>

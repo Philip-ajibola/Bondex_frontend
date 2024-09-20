@@ -45,9 +45,15 @@ export const Header = () => {
         } else window.alert("You Are Not Signed In");
     };
 
-    const handleLogOut = () => {
-        signOut();
-        navigate("/sign-in");
+    const handleLogOut = async () => {
+        toast.warning("You Are Now Logged In");
+        // await signOut();
+        localStorage.removeItem("isLoggedIn");
+        toast.warning("You Are Now Logged In");
+        setTimeout(() => {
+            navigate("/home");
+            toast.info("it got here");
+        }, 500);
     };
 
     const toggleMenu = () => {
@@ -109,7 +115,7 @@ export const Header = () => {
                     <button className={style.button} onClick={() => navigate('/contact')}>Contact</button>
                     <button className={style.button} onClick={() => navigate('/about-us')}>About</button>
                     {checker && isLoggedIn ? (
-                        <button className={style.button} onClick={handleLogOut}>Sign Out</button>
+                        <button className={style.button} onClick={()=>handleLogOut()}>Sign Out</button>
                     ) : (
                         <button className={style.button} onClick={() => navigate('/sign-in')}>Sign In</button>
                     )}
