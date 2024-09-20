@@ -6,6 +6,7 @@ import SmallDiv from "../../../component/smallDiv/smallDiv.tsx";
 import style from './index.module.css';
 import Data from './data';
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 const NewArrival = ()=>{
     const navigate = useNavigate();
     const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn")|| "false");
@@ -13,7 +14,7 @@ const NewArrival = ()=>{
     const handleOnclick = (product:OurProduct) =>{
         if(isLoggedIn) {
             navigate('/one-product', {state: {data: product}});
-        }
+        }else toast.warning("You Are Not Logged In. Log In To Purchase This Product")
     }
     return (
         <div className={style.container}>

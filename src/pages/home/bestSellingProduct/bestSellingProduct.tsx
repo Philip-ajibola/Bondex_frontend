@@ -14,13 +14,13 @@ const BestSellingProduct = ()=>{
         if(isLoggedIn){
             const product = data[index];
             navigate('/one-product',{state:{data:product}});
-        }else toast.warning("You Are Not Logged In")
+        }else toast.warning("You Are Not Logged In. Log In to Add Item To Cart")
 
     }
     const handleOnClick = ()=>{
         if(isLoggedIn){
             navigate('/view-all',{state:{data: data.slice(0,6),header: "Our Best Selling Products"}});
-        }else toast.warning("You Are Not Logged In");
+        }else toast.warning("You Are Not Logged In. Log In To View All Our Products");
     }
 
     return(
