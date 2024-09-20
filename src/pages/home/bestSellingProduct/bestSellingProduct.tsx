@@ -8,12 +8,18 @@ import {useNavigate} from "react-router-dom";
 
 const BestSellingProduct = ()=>{
     const navigate = useNavigate();
+    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
     const onProductClick = (index: number)=>{
-        const product = data[index];
-        navigate('/one-product',{state:{data:product}});
+        if(isLoggedIn){
+            const product = data[index];
+            navigate('/one-product',{state:{data:product}});
+        }else window.alert("You Are Not Logged In")
+
     }
     const handleOnClick = ()=>{
-        navigate('/view-all',{state:{data: data.slice(0,6),header: "Our Best Selling Products"}});
+        if(isLoggedIn){
+            navigate('/view-all',{state:{data: data.slice(0,6),header: "Our Best Selling Products"}});
+        }else window.alert("You Are Not Logged In");
     }
 
     return(

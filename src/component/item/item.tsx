@@ -10,6 +10,8 @@ import { CartContext } from "../../context.tsx";
 const Item = ({ item, onclick }:{item:CartItem,onclick:()=>void}) => {
     const { addToCart, addToWishList,removeFromWishList } = useContext(CartContext);
     const [isClicked, setIsClicked] = useState(false);
+    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+
 
     useEffect(() => {
         const savedState = localStorage.getItem(`wishlist-item-${item.id}`);
@@ -19,21 +21,27 @@ const Item = ({ item, onclick }:{item:CartItem,onclick:()=>void}) => {
     }, [item.id]);
 
     const handleOnclick = () => {
-        setIsClicked(prevIsClicked => {
-            const newIsClicked = !prevIsClicked;
-            if (newIsClicked) {
-                addToWishList(item);
-                localStorage.setItem(`wishlist-item-${item.id}`, "true");
-            }else{
-             removeFromWishList(item?.id-1);
-             localStorage.setItem(`wishlist-item-${item.id}`, "false");
-            }
-            return newIsClicked;
-        });
+        if(isLoggedIn) {
+            setIsClicked(prevIsClicked => {
+                const newIsClicked = !prevIsClicked;
+                if (newIsClicked) {
+                    addToWishList(item);
+                    localStorage.setItem(`wishlist-item-${item.id}`, "true");
+                } else {
+                    removeFromWishList(item?.id - 1);
+                    localStorage.setItem(`wishlist-item-${item.id}`, "false");
+                }
+                return newIsClicked;
+            });
+        }else window.alert("You Are Not Logged In. Login To Add Item To Wish List")
     };
 
     const handleAddToCart = () => {
-        addToCart(item);
+        if(isLoggedIn){
+            addToCart(item);
+        }else{
+            window.alert("You Are Not Signed In.  Login To Add Item To Cart");
+        }
     };
 
     return (

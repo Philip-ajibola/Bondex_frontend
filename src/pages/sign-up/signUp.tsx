@@ -50,6 +50,7 @@ const SignUp = () => {
             if (response.status === 'complete') {
                 console.log("Yes")
                 await setActive({session: response.createdSessionId});
+                localStorage.setItem("isLoggedIn", JSON.stringify(true));
                 setVerification({...verification, state: 'success'});
                 navigate('/home')
             }

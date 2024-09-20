@@ -6,8 +6,11 @@ import {useNavigate} from "react-router-dom";
 const Advert = ()=>{
     const product = data[16];
     const navigate = useNavigate();
+    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
     const onProductClick = ()=>{
-        navigate('/one-product',{state:{data:product}});
+        if(isLoggedIn) {
+            navigate('/one-product', {state: {data: product}});
+        }
     }
 
     return (

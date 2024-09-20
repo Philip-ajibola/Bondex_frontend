@@ -1,5 +1,5 @@
-import {useState, useContext, useRef, useEffect} from 'react';
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState, useContext, useRef, useEffect } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import { CartContext } from "../../context.tsx";
 import image from '../../assets/Vector.png';
@@ -10,7 +10,6 @@ import style from './index.module.css';
 import data from "../../pages/home/flash_sale/data.ts";
 import MenuIcon from '@mui/icons-material/Menu';
 
-
 export const Header = () => {
     const { cartItems, wishList } = useContext(CartContext);
     const location = useLocation();
@@ -19,25 +18,29 @@ export const Header = () => {
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState<CartItem[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
     const products = data;
-
-    const searchAreaRef = useRef<HTMLDivElement>(null);
+    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+    const searchAreaRef = useRef(null);
 
     const handleClickWishList = () => {
-        if (wishList.length === 0) {
-            window.alert("No Item Found In Wish List");
-        } else {
-            navigate('/wish-list', { state: { data: wishList } });
-        }
+        if (isLoggedIn) {
+            if (wishList.length === 0) {
+                window.alert("No Item Found In Wish List");
+            } else {
+                navigate('/wish-list', { state: { data: wishList } });
+            }
+        } else window.alert("You Are Not Signed In");
     };
 
     const handleClickCart = () => {
-        if (cartItems.length === 0) {
-            window.alert("No Item Found In Cart");
-        } else {
-            navigate('/cart', { state: { data: cartItems } });
-        }
+        if (isLoggedIn) {
+            if (cartItems.length === 0) {
+                window.alert("No Item Found In Cart");
+            } else {
+                navigate('/cart', { state: { data: cartItems } });
+            }
+        } else window.alert("You Are Not Signed In");
     };
 
     const handleLogOut = () => {
@@ -49,7 +52,7 @@ export const Header = () => {
         setMenuOpen(!menuOpen);
     };
 
-    const handleSearch = (event: any) => {
+    const handleSearch = (event) => {
         const query = event.target.value.toLowerCase();
         setSearchQuery(query);
 
@@ -59,16 +62,18 @@ export const Header = () => {
         setFilteredProducts(filtered);
     };
 
-    const handleProductClick = (product: CartItem) => {
-        navigate(`/one-product`, { state: { data: product } });
-        setSearchQuery('');
-        setFilteredProducts([]);
+    const handleProductClick = (product) => {
+        if (isLoggedIn) {
+            navigate(`/one-product`, { state: { data: product } });
+            setSearchQuery('');
+            setFilteredProducts([]);
+        } else window.alert("You Are Not Signed In");
     };
 
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event) => {
         if (
             searchAreaRef.current &&
-            !searchAreaRef.current.contains(event.target as Node)
+            !searchAreaRef.current.contains(event.target)
         ) {
             setSearchQuery('');
             setFilteredProducts([]);
@@ -83,19 +88,27 @@ export const Header = () => {
     }, []);
 
     const checker = location.pathname !== '/' && (location.pathname !== '/sign-in' && location.pathname !== '/sign-up');
-    console.log(checker)
+
+    const handleNavigation = (path) => {
+        if ( location.pathname !== '/') {
+            navigate(path);
+        } else {
+            window.alert("You Are Not Logged In");
+        }
+    };
+
     return (
         <div className={style.container}>
             <div className={style.header}>
                 <h1>Bobby's Store</h1>
                 <div className={style.overBar}>
-                    <Link to={'/home'}>Home</Link>
-                    <Link to={'/contact'}>Contact</Link>
-                    <Link to={'/about-us'}>About</Link>
-                    {checker ? (
-                        <Link to={'/sign-up'} onClick={handleLogOut}> Sign Out</Link>
+                    <button className={style.button} onClick={() => handleNavigation('/home')}>Home</button>
+                    <button className={style.button} onClick={() => navigate('/contact')}>Contact</button>
+                    <button className={style.button} onClick={() => navigate('/about-us')}>About</button>
+                    {checker && isLoggedIn? (
+                        <button className={style.button} onClick={handleLogOut}>Sign Out</button>
                     ) : (
-                        <Link to={'/sign-up'}>Sign Up</Link>
+                        <button className={style.button} onClick={() => navigate('/sign-in')}>Sign In</button>
                     )}
                 </div>
 
@@ -130,15 +143,15 @@ export const Header = () => {
 
                         <div className={style.imgContainer}>
                             <div className={style.imgDiv}>
-                                <img src={image1} onClick={() => handleClickWishList()} alt="WishList" />
+                                <img src={image1} onClick={handleClickWishList} alt="WishList" />
                                 {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
                             </div>
                             <div className={style.imgDiv}>
-                                <img src={image2} onClick={() => handleClickCart()} alt="Cart" />
+                                <img src={image2} onClick={handleClickCart} alt="Cart" />
                                 {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
                             </div>
                             <div className={style.imgDiv}>
-                                <img src={profile} alt="Profile" onClick={() => navigate('/profile')} />
+                                <img src={profile} alt="Profile" onClick={() => handleNavigation('/profile')} />
                             </div>
                         </div>
                     </div>
@@ -147,57 +160,58 @@ export const Header = () => {
 
             <div className={style.mobileHeader}>
                 <h1>Bobby's Store</h1>
-                {checker && (<div className={style.searchDiv}>
-                    <div className={style.searchBar}>
-                        <input type="text" placeholder="What are you looking for?" className={style.search}
-                               onChange={handleSearch}/>
-                        <div className={style.searchLogo}>
-                            <img src={image} alt="Search"/>
+                {checker && (
+                    <div className={style.searchDiv}>
+                        <div className={style.searchBar}>
+                            <input type="text" placeholder="What are you looking for?" className={style.search} onChange={handleSearch} />
+                            <div className={style.searchLogo}>
+                                <img src={image} alt="Search" />
+                            </div>
+                        </div>
+                        {filteredProducts.length > 0 && (
+                            <div className={style.dropdown}>
+                                {filteredProducts.map(product => (
+                                    <div
+                                        key={product.id}
+                                        className={style.dropdownItem}
+                                        onClick={() => handleProductClick(product)}
+                                    >
+                                        {product.productName}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        <div className={style.imgContainer}>
+                            <div className={style.imgDiv}>
+                                <img src={image1} onClick={handleClickWishList} alt="WishList" />
+                                {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
+                            </div>
+                            <div className={style.imgDiv}>
+                                <img src={image2} onClick={handleClickCart} alt="Cart" />
+                                {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
+                            </div>
+                            <div className={style.imgDiv}>
+                                <img src={profile} alt="Profile" onClick={() => handleNavigation('/profile')} />
+                            </div>
                         </div>
                     </div>
-                    {filteredProducts.length > 0 && (
-                        <div className={style.dropdown}>
-                            {filteredProducts.map(product => (
-                                <div
-                                    key={product.id}
-                                    className={style.dropdownItem}
-                                    onClick={() => handleProductClick(product)}
-                                >
-                                    {product.productName}
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                    <div className={style.imgContainer}>
-                        <div className={style.imgDiv}>
-                            <img src={image1} onClick={() => handleClickWishList()} alt="WishList"/>
-                            {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
-                        </div>
-                        <div className={style.imgDiv}>
-                            <img src={image2} onClick={() => handleClickCart()} alt="Cart"/>
-                            {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
-                        </div>
-                        <div className={style.imgDiv}>
-                            <img src={profile} alt="Profile" onClick={() => navigate('/profile')}/>
-                        </div>
-                    </div>
-                </div>)}
-                <button onClick={()=>toggleMenu()} className={style.menu}>
-                    <MenuIcon style={{color:'black'}}/>
+                )}
+                <button onClick={toggleMenu} className={style.menu}>
+                    <MenuIcon style={{ color: 'black' }} />
                 </button>
             </div>
             {menuOpen && (
                 <div className={style.mobileMenu}>
-                    <Link className={style.link} to={'/home'} onClick={toggleMenu}>Home</Link>
-                    <Link className={style.link} to={'/contact'} onClick={toggleMenu}>Contact</Link>
-                    <Link className={style.link} to={'/about-us'} onClick={toggleMenu}>About</Link>
+                    <button className={style.button} onClick={() => handleNavigation('/home')}>Home</button>
+                    <button className={style.button} onClick={() => handleNavigation('/contact')}>Contact</button>
+                    <button className={style.button} onClick={() => handleNavigation('/about-us')}>About</button>
                     {checker ? (
-                        <Link className={style.link} to={'/sign-up'} onClick={() => {
+                        <button className={style.button} onClick={() => {
                             handleLogOut();
                             toggleMenu();
-                        }}>Sign Out</Link>
+                        }}>Sign Out</button>
                     ) : (
-                        <Link className={style.link} to={'/sign-up'} onClick={()=>toggleMenu()}>Sign Up</Link>
+                        <button className={style.button} onClick={() => navigate('/sign-up')}>Sign Up</button>
                     )}
                 </div>
             )}

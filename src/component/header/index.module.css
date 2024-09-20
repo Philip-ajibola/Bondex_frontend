@@ -102,6 +102,18 @@
     top: 60px;
     overflow-y: auto;
 }
+.button{
+    background-color: white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
 
 .dropdownItem {
     padding: 10px;

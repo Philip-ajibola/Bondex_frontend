@@ -24,6 +24,7 @@ const SignIn = ()=>{
             console.log(signInAttempt)
             if (signInAttempt.status === 'complete') {
                 await setActive({ session: signInAttempt.createdSessionId })
+                localStorage.setItem("isLoggedIn", JSON.stringify(true));
                 navigate('/home')
 
             } else {

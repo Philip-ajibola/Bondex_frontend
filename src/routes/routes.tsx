@@ -20,7 +20,7 @@ export const ROUTE = [
         children:[
             {
                 path: "/",
-                element:<AboutUs/>
+                element:<Home/>
             },
             {
                 path: "/home",
