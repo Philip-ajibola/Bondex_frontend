@@ -4,6 +4,7 @@ import axios from 'axios';
 import './styles.css';
 import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 const PaymentForm = ({ amount }:{amount:number}) => {
     const stripe = useStripe();
     const navigate = useNavigate();
@@ -42,13 +43,14 @@ const PaymentForm = ({ amount }:{amount:number}) => {
                 setSuccess(true);
                 const cartItems:CartItem[] = [];
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                window.alert("Payment successful");
+                toast.success("Payment successful");
                 navigate('/home')
             }
 
 
         } catch (err:any) {
             setError(err.response?.data?.error || 'An error occurred while processing your payment.');
+            toast.error(err.response?.data?.error || 'An error occurred while processing your payment.')
         } finally {
             setIsLoading(false);
         }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import style from './index.module.css';
 import CustomButton from "../../component/customeButton/customButton.tsx";
 import { useLocation, useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
 
 const Checkout = () => {
     const navigate = useNavigate();
@@ -79,8 +80,8 @@ const Checkout = () => {
 
     const handleStripePayment = () => {
         if (validateFields()) {
+            toast.success("Your Order Has Been Sent to Us. Expect Your Product soon");
             navigate('/stripe-check-out', { state: { amount: amount } });
-            window.alert("Your Order Has Been Sent to Us. Expect Your Product soon");
         }
     };
 
