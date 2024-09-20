@@ -47,7 +47,7 @@ export const Header = () => {
 
     const handleLogOut = async () => {
         toast.warning("You Are Now Logged In");
-        // await signOut();
+         await signOut();
         localStorage.removeItem("isLoggedIn");
         toast.warning("You Are Now Logged In");
         setTimeout(() => {
