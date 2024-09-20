@@ -11,7 +11,7 @@
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    width: 40%;
+    width: 45%;
     text-align: center;
 }
 
@@ -78,4 +78,10 @@ input {
 
 .resend-btn:hover {
     color: #e69898;
+}
+@media screen and (max-width: 600px){
+    .verification-container{
+        width: 95%;
+    }
+
 }
