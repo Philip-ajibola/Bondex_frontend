@@ -204,7 +204,7 @@ export const Header = () => {
                 </button>
             </div>
             {menuOpen && (
-                <div className={style.mobileMenu} ref={menuRef}> {/* Add ref to menu */}
+                <div className={style.mobileMenu} ref={menuRef}>
                     <button className={style.button} onClick={() => handleNavigation('/home')}>Home</button>
                     <button className={style.button} onClick={() => handleNavigation('/contact')}>Contact</button>
                     <button className={style.button} onClick={() => handleNavigation('/about-us')}>About</button>
