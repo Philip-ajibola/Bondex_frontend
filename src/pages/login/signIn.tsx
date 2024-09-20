@@ -32,7 +32,7 @@ const SignIn = ()=>{
                 console.error(JSON.stringify(signInAttempt, null, 2))
                 toast.error(JSON.stringify(signInAttempt, null, 2))
             }
-        } catch (err) {
+        } catch (err:any) {
             console.error(JSON.stringify(err, null, 2))
             toast.error(JSON.stringify(err.message, null, 2))
         }

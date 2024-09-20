@@ -38,10 +38,6 @@ const PaymentForm = ({ amount }:{amount:number}) => {
                     card: cardElement!,
                 },
             });
-            const handleOnclick = ()=>{
-
-            }
-
 
             if (error) {
                 setError(error.message);
