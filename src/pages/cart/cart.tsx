@@ -6,7 +6,6 @@ import arrowUp from "../../assets/Drop-Up-Small.png";
 import {useContext, useState} from "react";
 import {CartContext} from "../../context.tsx";
 import {useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
 
 const Cart = () => {
     const { cartItems,cancelOrder } = useContext(CartContext);
