@@ -9,7 +9,7 @@ import image2 from '../../assets/Cart1.png';
 import style from './index.module.css';
 import data from "../../pages/home/flash_sale/data.ts";
 import MenuIcon from '@mui/icons-material/Menu';
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 export const Header = () => {
     const { cartItems, wishList } = useContext(CartContext);
@@ -21,8 +21,9 @@ export const Header = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredProducts, setFilteredProducts] = useState<CartItem[]>([]);
     const products = data;
-    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn")|| "false");
+    const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn") || "false");
     const searchAreaRef = useRef<any>(null);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     const handleClickWishList = () => {
         if (isLoggedIn) {
@@ -37,11 +38,11 @@ export const Header = () => {
     const handleClickCart = () => {
         if (isLoggedIn) {
             if (cartItems.length === 0) {
-                toast.warning("No Item Found In Cart");
+                window.alert("No Item Found In Cart");
             } else {
                 navigate('/cart', { state: { data: cartItems } });
             }
-        } else toast.warning("You Are Not Signed In");
+        } else window.alert("You Are Not Signed In");
     };
 
     const handleLogOut = () => {
@@ -53,7 +54,7 @@ export const Header = () => {
         setMenuOpen(!menuOpen);
     };
 
-    const handleSearch = (event:any) => {
+    const handleSearch = (event: any) => {
         const query = event.target.value.toLowerCase();
         setSearchQuery(query);
 
@@ -63,7 +64,7 @@ export const Header = () => {
         setFilteredProducts(filtered);
     };
 
-    const handleProductClick = (product:CartItem) => {
+    const handleProductClick = (product: CartItem) => {
         if (isLoggedIn) {
             navigate(`/one-product`, { state: { data: product } });
             setSearchQuery('');
@@ -71,13 +72,14 @@ export const Header = () => {
         } else window.alert("You Are Not Signed In");
     };
 
-    const handleClickOutside = (event:any) => {
-        if (
-            searchAreaRef.current &&
-            !searchAreaRef.current.contains(event.target)
-        ) {
+    const handleClickOutside = (event: any) => {
+        if (searchAreaRef.current && !searchAreaRef.current.contains(event.target)) {
             setSearchQuery('');
             setFilteredProducts([]);
+        }
+
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setMenuOpen(false);
         }
     };
 
@@ -90,8 +92,8 @@ export const Header = () => {
 
     const checker = location.pathname !== '/' && (location.pathname !== '/sign-in' && location.pathname !== '/sign-up');
 
-    const handleNavigation = (path:string) => {
-        if ( location.pathname !== '/') {
+    const handleNavigation = (path: string) => {
+        if (location.pathname !== '/') {
             navigate(path);
         } else {
             toast.warning("You Are Not Logged In");
@@ -106,7 +108,7 @@ export const Header = () => {
                     <button className={style.button} onClick={() => handleNavigation('/home')}>Home</button>
                     <button className={style.button} onClick={() => navigate('/contact')}>Contact</button>
                     <button className={style.button} onClick={() => navigate('/about-us')}>About</button>
-                    {checker && isLoggedIn? (
+                    {checker && isLoggedIn ? (
                         <button className={style.button} onClick={handleLogOut}>Sign Out</button>
                     ) : (
                         <button className={style.button} onClick={() => navigate('/sign-in')}>Sign In</button>
@@ -202,7 +204,7 @@ export const Header = () => {
                 </button>
             </div>
             {menuOpen && (
-                <div className={style.mobileMenu}>
+                <div className={style.mobileMenu} ref={menuRef}> {/* Add ref to menu */}
                     <button className={style.button} onClick={() => handleNavigation('/home')}>Home</button>
                     <button className={style.button} onClick={() => handleNavigation('/contact')}>Contact</button>
                     <button className={style.button} onClick={() => handleNavigation('/about-us')}>About</button>

@@ -2,6 +2,11 @@
     display: flex;
     border-bottom: 2px solid;
     border-bottom-color: #b3b3b3;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 .header{
     display: flex;
@@ -136,7 +141,7 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: 0;
+        padding: 8px;
         h1{
             font-size: 1rem;
         }
@@ -152,8 +157,12 @@
         .searchBar{
             .search{
                 width: 80px;
+                height: 22px;
+                padding: 3px 10px;
             }
-
+            .searchLogo{
+                width: 10px;
+            }
             .search::placeholder{
                     font-size: 0.5rem;
             }
