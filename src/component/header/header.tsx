@@ -47,6 +47,8 @@ export const Header = () => {
 
     const handleLogOut = async () => {
          await signOut();
+         localStorage.removeItem('wishList')
+         localStorage.removeItem('cartItems')
         localStorage.removeItem("isLoggedIn");
         setTimeout(() => {
             navigate("/sign-in");
@@ -149,12 +151,12 @@ export const Header = () => {
                         )}
 
                         <div className={style.imgContainer}>
-                            <div className={style.imgDiv}>
-                                <img src={image1} onClick={handleClickWishList} alt="WishList" />
+                            <div className={style.imgDiv} onClick={handleClickWishList} >
+                                <img src={image1} alt="WishList" />
                                 {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
                             </div>
-                            <div className={style.imgDiv}>
-                                <img src={image2} onClick={handleClickCart} alt="Cart" />
+                            <div className={style.imgDiv} onClick={handleClickCart}>
+                                <img src={image2}  alt="Cart" />
                                 {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
                             </div>
                             <div className={style.imgDiv}>
