@@ -16,7 +16,7 @@ interface CartContextType {
     wishList: CartItem[];
     addToCart: (item: CartItem) => void;
     addToWishList: (item: CartItem) => void;
-    removeFromWishList: (index: number) => void;
+    removeFromWishList: (index: number | undefined) => void;
     cancelOrder: () => void;
     afterSuccessFulPayment : ()=>void;
 }

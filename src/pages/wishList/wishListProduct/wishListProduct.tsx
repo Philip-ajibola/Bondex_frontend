@@ -24,7 +24,7 @@ const WishListProduct = ({ item, onclick }:{item:CartItem,onclick:()=>void}) => 
     }, [navigate]);
     const handleClick = (item:CartItem) => {
         setIsHidden(true);
-        removeFromWishList(item?.id - 1);
+        removeFromWishList(item?.id);
         localStorage.setItem(`wishlist-item-${item.id}`, "false");
     };
 

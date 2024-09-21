@@ -46,12 +46,10 @@ export const Header = () => {
     };
 
     const handleLogOut = async () => {
-        toast.warning("You Are Now Logged In");
          await signOut();
         localStorage.removeItem("isLoggedIn");
-        toast.warning("You Are Now Logged In");
         setTimeout(() => {
-            navigate("/home");
+            navigate("/sign-in");
             toast.info("it got here");
         }, 500);
     };
@@ -75,7 +73,7 @@ export const Header = () => {
             navigate(`/one-product`, { state: { data: product } });
             setSearchQuery('');
             setFilteredProducts([]);
-        } else window.alert("You Are Not Signed In");
+        } else toast.warning("You Are Not Signed In");
     };
 
     const handleClickOutside = (event: any) => {
