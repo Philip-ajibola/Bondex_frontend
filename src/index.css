@@ -4,7 +4,7 @@
 
 @layer components{
     .navBar{
-        @apply text-navBar-text font-bold font-serif text-2xl
+        @apply text-navBar-text font-bold font-serif text-2xl cursor-pointer
     }
 
 
