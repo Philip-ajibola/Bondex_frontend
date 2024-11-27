@@ -1,0 +1,27 @@
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.animate-moveBackground {
+    animation: moveBackground 20s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+.bg-cover {
+    background-image: url('../../assets/Looper BG.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-fixed {
+    background-attachment: fixed;
+}
+
+.bg-scroll {
+    background-attachment: scroll;
+}

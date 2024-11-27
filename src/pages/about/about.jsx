@@ -1,5 +1,6 @@
 import image from "../../assets/download 1.svg";
 import image1 from "../../assets/uppLog 1.svg";
+import './index.css'
 
 const About = ()=>{
     return(
