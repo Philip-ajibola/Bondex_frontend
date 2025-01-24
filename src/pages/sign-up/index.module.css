@@ -86,6 +86,10 @@
     }
     .secondContainer{
         width: 98%;
+        .p1{
+            font-size: 2.2rem;
+            margin-top: 50px;
+        }
         .innerDiv{
             .button2, .button1{
                 width: 90%;

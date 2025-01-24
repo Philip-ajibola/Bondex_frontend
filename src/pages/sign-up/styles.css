@@ -79,3 +79,9 @@ input {
 .resend-btn:hover {
     color: #e69898;
 }
+
+@media only screen and (max-width: 600px) {
+    .verification-container {
+        width: 90%;
+    }
+}

@@ -17,6 +17,8 @@ export const Header = () => {
     const { signOut } = useAuth();
     const navigate = useNavigate();
 
+    const check = false
+
     const [menuOpen, setMenuOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredProducts, setFilteredProducts] = useState<CartItem[]>([]);
@@ -46,18 +48,18 @@ export const Header = () => {
     };
 
     const handleLogOut = async () => {
-         await signOut();
-         localStorage.removeItem('wishList')
-         localStorage.removeItem('cartItems')
+        await signOut();
+        localStorage.removeItem('wishList');
+        localStorage.removeItem('cartItems');
         localStorage.removeItem("isLoggedIn");
         setTimeout(() => {
             navigate("/sign-in");
-            toast.info("it got here");
+            toast.info("Logged Out");
         }, 500);
     };
 
     const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+        setMenuOpen(prev => !prev);
     };
 
     const handleSearch = (event: any) => {
@@ -115,7 +117,7 @@ export const Header = () => {
                     <button className={style.button} onClick={() => navigate('/contact')}>Contact</button>
                     <button className={style.button} onClick={() => navigate('/about-us')}>About</button>
                     {checker && isLoggedIn ? (
-                        <button className={style.button} onClick={()=>handleLogOut()}>Sign Out</button>
+                        <button className={style.button} onClick={() => handleLogOut()}>Sign Out</button>
                     ) : (
                         <button className={style.button} onClick={() => navigate('/sign-in')}>Sign In</button>
                     )}
@@ -151,12 +153,12 @@ export const Header = () => {
                         )}
 
                         <div className={style.imgContainer}>
-                            <div className={style.imgDiv} onClick={handleClickWishList} >
+                            <div className={style.imgDiv} onClick={handleClickWishList}>
                                 <img src={image1} alt="WishList" />
                                 {wishList.length !== 0 && <div className={style.number}>{wishList.length}</div>}
                             </div>
                             <div className={style.imgDiv} onClick={handleClickCart}>
-                                <img src={image2}  alt="Cart" />
+                                <img src={image2} alt="Cart" />
                                 {cartItems.length !== 0 && <div className={style.number}>{cartItems.length}</div>}
                             </div>
                             <div className={style.imgDiv}>
@@ -209,15 +211,15 @@ export const Header = () => {
                     <MenuIcon style={{ color: 'black' }} />
                 </button>
             </div>
+
+
             {menuOpen && (
                 <div className={style.mobileMenu} ref={menuRef}>
                     <button className={style.button} onClick={() => handleNavigation('/home')}>Home</button>
                     <button className={style.button} onClick={() => handleNavigation('/contact')}>Contact</button>
                     <button className={style.button} onClick={() => handleNavigation('/about-us')}>About</button>
                     {checker ? (
-                        <button className={style.button} onClick={() => {
-                            handleLogOut();
-                        }}>Sign Out</button>
+                        <button className={style.button} onClick={() => handleLogOut()}>Sign Out</button>
                     ) : (
                         <button className={style.button} onClick={() => navigate('/sign-in')}>Sign In</button>
                     )}

@@ -68,7 +68,8 @@
             gap: 10px;
         }
         .lastP{
-            margin: 0;
+            margin-bottom: 30px;
+            margin-top: 0;
         }
     }
 }
@@ -89,6 +90,14 @@
     }
     .secondContainer{
         width: 98%;
+        .p1{
+            margin-top: 50px;
+            font-size: 2.2rem;
+        }
+        .p2{
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
         .innerDiv{
             .button2, .button1{
                 width: 90%;
